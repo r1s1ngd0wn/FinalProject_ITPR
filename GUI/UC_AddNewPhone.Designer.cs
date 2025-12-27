@@ -52,9 +52,9 @@
             this.cboFingerprint = new System.Windows.Forms.ComboBox();
             this.cboSimType = new System.Windows.Forms.ComboBox();
             this.cboNetworkType = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -289,15 +289,6 @@
             this.cboNetworkType.Size = new System.Drawing.Size(154, 28);
             this.cboNetworkType.TabIndex = 3;
             // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(641, 428);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 19);
-            this.textBox1.TabIndex = 2;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(635, 108);
@@ -311,17 +302,25 @@
             // 
             this.btnSave.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSave.Image = global::DACK_ITPROJECT.Properties.Resources.diskette;
-            this.btnSave.Location = new System.Drawing.Point(356, 531);
+            this.btnSave.Location = new System.Drawing.Point(354, 524);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "button2";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(641, 417);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(154, 20);
+            this.txtPrice.TabIndex = 6;
+            // 
             // UC_AddNewPhone
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cboInternalStorage);
@@ -334,7 +333,6 @@
             this.Controls.Add(this.cboRearCamera);
             this.Controls.Add(this.cboRam);
             this.Controls.Add(this.txtModelName);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtCompany);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -382,5 +380,8 @@
         private System.Windows.Forms.ComboBox cboFingerprint;
         private System.Windows.Forms.ComboBox cboSimType;
         private System.Windows.Forms.ComboBox cboNetworkType;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txtPrice;
     }
 }
