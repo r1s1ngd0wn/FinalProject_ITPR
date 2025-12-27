@@ -18,14 +18,29 @@ namespace DACK_ITPROJECT
             InitializeComponent();
         }
 
+        private void LoadSubForm(UserControl uc)
+        {
+            uc.Dock = DockStyle.Fill;
+            // Use the panel that actually exists on the form (panelCenter from the designer)
+            this.panelCenter.Controls.Clear();
+            this.panelCenter.Controls.Add(uc);
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
-            //Application.Exit();
+            Application.Exit();
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
         {
-            //this.WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnAddPhone_Click(object sender, EventArgs e)
+        {
+            // Load the AddNewPhone user control into the center panel for testing
+            var uc = new UC_AddNewPhone();
+            LoadSubForm(uc);
         }
     }
 }

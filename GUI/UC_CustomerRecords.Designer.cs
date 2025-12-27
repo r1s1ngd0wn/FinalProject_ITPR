@@ -74,7 +74,7 @@
             this.cboSearchBy.FormattingEnabled = true;
             this.cboSearchBy.Items.AddRange(new object[] {
             "Customer Name",
-            "IMEI"});
+            "MaHDB"});
             this.cboSearchBy.Location = new System.Drawing.Point(261, 97);
             this.cboSearchBy.Name = "cboSearchBy";
             this.cboSearchBy.Size = new System.Drawing.Size(283, 28);

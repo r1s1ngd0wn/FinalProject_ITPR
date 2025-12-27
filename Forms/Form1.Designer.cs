@@ -31,10 +31,6 @@
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelCenter = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.panelPassword = new System.Windows.Forms.Panel();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.linkVerify = new System.Windows.Forms.LinkLabel();
-            this.linkCancel = new System.Windows.Forms.LinkLabel();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnCustomerRecords = new System.Windows.Forms.Button();
@@ -43,14 +39,12 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAddPhone = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
-            this.panelCenter.SuspendLayout();
-            this.panelPassword.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.CadetBlue;
-            this.panelMenu.Controls.Add(this.panelPassword);
+            this.panelMenu.Controls.Add(this.btnMinimize);
             this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.btnCustomerRecords);
             this.panelMenu.Controls.Add(this.btnStock);
@@ -67,56 +61,11 @@
             // panelCenter
             // 
             this.panelCenter.BackColor = System.Drawing.Color.Azure;
-            this.panelCenter.Controls.Add(this.btnMinimize);
             this.panelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCenter.Location = new System.Drawing.Point(250, 0);
             this.panelCenter.Name = "panelCenter";
             this.panelCenter.Size = new System.Drawing.Size(1073, 718);
             this.panelCenter.TabIndex = 1;
-            // 
-            // panelPassword
-            // 
-            this.panelPassword.Controls.Add(this.linkCancel);
-            this.panelPassword.Controls.Add(this.linkVerify);
-            this.panelPassword.Controls.Add(this.txtPassword);
-            this.panelPassword.Location = new System.Drawing.Point(26, 402);
-            this.panelPassword.Name = "panelPassword";
-            this.panelPassword.Size = new System.Drawing.Size(200, 100);
-            this.panelPassword.TabIndex = 7;
-            this.panelPassword.Visible = false;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.BackColor = System.Drawing.Color.CadetBlue;
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Location = new System.Drawing.Point(3, 15);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(194, 16);
-            this.txtPassword.TabIndex = 0;
-            // 
-            // linkVerify
-            // 
-            this.linkVerify.AutoSize = true;
-            this.linkVerify.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkVerify.LinkColor = System.Drawing.Color.White;
-            this.linkVerify.Location = new System.Drawing.Point(18, 65);
-            this.linkVerify.Name = "linkVerify";
-            this.linkVerify.Size = new System.Drawing.Size(52, 19);
-            this.linkVerify.TabIndex = 1;
-            this.linkVerify.TabStop = true;
-            this.linkVerify.Text = "Verify";
-            // 
-            // linkCancel
-            // 
-            this.linkCancel.AutoSize = true;
-            this.linkCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkCancel.LinkColor = System.Drawing.Color.White;
-            this.linkCancel.Location = new System.Drawing.Point(116, 65);
-            this.linkCancel.Name = "linkCancel";
-            this.linkCancel.Size = new System.Drawing.Size(66, 19);
-            this.linkCancel.TabIndex = 1;
-            this.linkCancel.TabStop = true;
-            this.linkCancel.Text = "Cancel";
             // 
             // btnMinimize
             // 
@@ -125,7 +74,7 @@
             this.btnMinimize.ForeColor = System.Drawing.Color.Transparent;
             this.btnMinimize.Image = global::DACK_ITPROJECT.Properties.Resources.minimize;
             this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMinimize.Location = new System.Drawing.Point(751, 0);
+            this.btnMinimize.Location = new System.Drawing.Point(57, 3);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(45, 42);
             this.btnMinimize.TabIndex = 2;
@@ -218,6 +167,7 @@
             this.btnAddPhone.TabIndex = 0;
             this.btnAddPhone.Text = "AddPhone";
             this.btnAddPhone.UseVisualStyleBackColor = true;
+            this.btnAddPhone.Click += new System.EventHandler(this.btnAddPhone_Click);
             // 
             // Form1
             // 
@@ -229,14 +179,11 @@
             this.Controls.Add(this.panelMenu);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panelMenu.ResumeLayout(false);
-            this.panelCenter.ResumeLayout(false);
-            this.panelPassword.ResumeLayout(false);
-            this.panelPassword.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -253,10 +200,6 @@
         private System.Windows.Forms.Button btnStock;
         private System.Windows.Forms.Button btnCustomerRecords;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panelPassword;
-        private System.Windows.Forms.LinkLabel linkCancel;
-        private System.Windows.Forms.LinkLabel linkVerify;
-        private System.Windows.Forms.TextBox txtPassword;
     }
 }
 

@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvStock = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblCompany = new System.Windows.Forms.Label();
-            this.lblModel = new System.Windows.Forms.Label();
-            this.lblRam = new System.Windows.Forms.Label();
-            this.lblMemory = new System.Windows.Forms.Label();
-            this.lblExpandable = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblDisplay = new System.Windows.Forms.Label();
+            this.lblExpandable = new System.Windows.Forms.Label();
+            this.lblMemory = new System.Windows.Forms.Label();
+            this.lblRam = new System.Windows.Forms.Label();
+            this.lblModel = new System.Windows.Forms.Label();
+            this.lblCompany = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -54,20 +54,20 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.lblRear = new System.Windows.Forms.Label();
-            this.lblFront = new System.Windows.Forms.Label();
-            this.lblFinger = new System.Windows.Forms.Label();
-            this.lblSim = new System.Windows.Forms.Label();
-            this.lblNetwork = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
+            this.lblNetwork = new System.Windows.Forms.Label();
+            this.lblSim = new System.Windows.Forms.Label();
+            this.lblFinger = new System.Windows.Forms.Label();
+            this.lblFront = new System.Windows.Forms.Label();
+            this.lblRear = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             this.panel1.SuspendLayout();
@@ -83,14 +83,14 @@
             this.dgvStock.GridColor = System.Drawing.SystemColors.AppWorkspace;
             this.dgvStock.Location = new System.Drawing.Point(0, 88);
             this.dgvStock.Name = "dgvStock";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvStock.RowHeadersVisible = false;
             this.dgvStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStock.Size = new System.Drawing.Size(850, 251);
@@ -116,45 +116,15 @@
             this.panel1.Size = new System.Drawing.Size(728, 212);
             this.panel1.TabIndex = 2;
             // 
-            // label2
+            // label7
             // 
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(29, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 23);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Company:";
-            // 
-            // label3
-            // 
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(29, 57);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 23);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Model Name:";
-            // 
-            // label4
-            // 
-            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(29, 89);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 23);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Ram:";
-            // 
-            // label5
-            // 
-            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(29, 122);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(121, 23);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Internal Storage:";
+            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(29, 188);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 23);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Display:";
             // 
             // label6
             // 
@@ -166,55 +136,45 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Expandable Memory:";
             // 
-            // label7
+            // label5
             // 
-            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(29, 188);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 23);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Display:";
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(29, 122);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(121, 23);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Internal Storage:";
             // 
-            // lblCompany
+            // label4
             // 
-            this.lblCompany.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompany.Location = new System.Drawing.Point(200, 23);
-            this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(100, 23);
-            this.lblCompany.TabIndex = 0;
-            this.lblCompany.Text = "----";
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(29, 89);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 23);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Ram:";
             // 
-            // lblModel
+            // label3
             // 
-            this.lblModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModel.Location = new System.Drawing.Point(200, 57);
-            this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(100, 23);
-            this.lblModel.TabIndex = 0;
-            this.lblModel.Text = "----";
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(29, 57);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Model Name:";
             // 
-            // lblRam
+            // lblDisplay
             // 
-            this.lblRam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRam.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRam.Location = new System.Drawing.Point(200, 89);
-            this.lblRam.Name = "lblRam";
-            this.lblRam.Size = new System.Drawing.Size(100, 23);
-            this.lblRam.TabIndex = 0;
-            this.lblRam.Text = "----";
-            // 
-            // lblMemory
-            // 
-            this.lblMemory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMemory.Location = new System.Drawing.Point(200, 122);
-            this.lblMemory.Name = "lblMemory";
-            this.lblMemory.Size = new System.Drawing.Size(100, 23);
-            this.lblMemory.TabIndex = 0;
-            this.lblMemory.Text = "----";
+            this.lblDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDisplay.Location = new System.Drawing.Point(200, 187);
+            this.lblDisplay.Name = "lblDisplay";
+            this.lblDisplay.Size = new System.Drawing.Size(100, 23);
+            this.lblDisplay.TabIndex = 0;
+            this.lblDisplay.Text = "----";
             // 
             // lblExpandable
             // 
@@ -226,15 +186,55 @@
             this.lblExpandable.TabIndex = 0;
             this.lblExpandable.Text = "----";
             // 
-            // lblDisplay
+            // lblMemory
             // 
-            this.lblDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDisplay.Location = new System.Drawing.Point(200, 187);
-            this.lblDisplay.Name = "lblDisplay";
-            this.lblDisplay.Size = new System.Drawing.Size(100, 23);
-            this.lblDisplay.TabIndex = 0;
-            this.lblDisplay.Text = "----";
+            this.lblMemory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMemory.Location = new System.Drawing.Point(200, 122);
+            this.lblMemory.Name = "lblMemory";
+            this.lblMemory.Size = new System.Drawing.Size(100, 23);
+            this.lblMemory.TabIndex = 0;
+            this.lblMemory.Text = "----";
+            // 
+            // lblRam
+            // 
+            this.lblRam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRam.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRam.Location = new System.Drawing.Point(200, 89);
+            this.lblRam.Name = "lblRam";
+            this.lblRam.Size = new System.Drawing.Size(100, 23);
+            this.lblRam.TabIndex = 0;
+            this.lblRam.Text = "----";
+            // 
+            // lblModel
+            // 
+            this.lblModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModel.Location = new System.Drawing.Point(200, 57);
+            this.lblModel.Name = "lblModel";
+            this.lblModel.Size = new System.Drawing.Size(100, 23);
+            this.lblModel.TabIndex = 0;
+            this.lblModel.Text = "----";
+            // 
+            // lblCompany
+            // 
+            this.lblCompany.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompany.Location = new System.Drawing.Point(200, 23);
+            this.lblCompany.Name = "lblCompany";
+            this.lblCompany.Size = new System.Drawing.Size(100, 23);
+            this.lblCompany.TabIndex = 0;
+            this.lblCompany.Text = "----";
+            // 
+            // label2
+            // 
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(29, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 23);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Company:";
             // 
             // panel2
             // 
@@ -368,125 +368,15 @@
             this.label17.TabIndex = 0;
             this.label17.Text = "----";
             // 
-            // label18
+            // lblPrice
             // 
-            this.label18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(200, 23);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(100, 23);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "----";
-            // 
-            // label19
-            // 
-            this.label19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(29, 23);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(100, 23);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Company:";
-            // 
-            // label20
-            // 
-            this.label20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(371, 23);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(100, 23);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "Rear Camera:";
-            // 
-            // label21
-            // 
-            this.label21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(371, 57);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(100, 23);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Front Camera:";
-            // 
-            // label22
-            // 
-            this.label22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(371, 89);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(123, 23);
-            this.label22.TabIndex = 0;
-            this.label22.Text = "Fingerprint Sensor: ";
-            // 
-            // label23
-            // 
-            this.label23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(371, 122);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(135, 23);
-            this.label23.TabIndex = 0;
-            this.label23.Text = "Sim Type:";
-            // 
-            // label24
-            // 
-            this.label24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(371, 157);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(100, 23);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "Network Type:";
-            // 
-            // label25
-            // 
-            this.label25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(371, 188);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(100, 23);
-            this.label25.TabIndex = 0;
-            this.label25.Text = "Price:";
-            // 
-            // lblRear
-            // 
-            this.lblRear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRear.Location = new System.Drawing.Point(511, 23);
-            this.lblRear.Name = "lblRear";
-            this.lblRear.Size = new System.Drawing.Size(100, 23);
-            this.lblRear.TabIndex = 0;
-            this.lblRear.Text = "----";
-            // 
-            // lblFront
-            // 
-            this.lblFront.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblFront.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFront.Location = new System.Drawing.Point(511, 57);
-            this.lblFront.Name = "lblFront";
-            this.lblFront.Size = new System.Drawing.Size(100, 23);
-            this.lblFront.TabIndex = 0;
-            this.lblFront.Text = "----";
-            // 
-            // lblFinger
-            // 
-            this.lblFinger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblFinger.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinger.Location = new System.Drawing.Point(511, 89);
-            this.lblFinger.Name = "lblFinger";
-            this.lblFinger.Size = new System.Drawing.Size(100, 23);
-            this.lblFinger.TabIndex = 0;
-            this.lblFinger.Text = "----";
-            // 
-            // lblSim
-            // 
-            this.lblSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblSim.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSim.Location = new System.Drawing.Point(511, 122);
-            this.lblSim.Name = "lblSim";
-            this.lblSim.Size = new System.Drawing.Size(100, 23);
-            this.lblSim.TabIndex = 0;
-            this.lblSim.Text = "----";
+            this.lblPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrice.Location = new System.Drawing.Point(511, 187);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(100, 23);
+            this.lblPrice.TabIndex = 0;
+            this.lblPrice.Text = "----";
             // 
             // lblNetwork
             // 
@@ -498,15 +388,125 @@
             this.lblNetwork.TabIndex = 0;
             this.lblNetwork.Text = "----";
             // 
-            // lblPrice
+            // lblSim
             // 
-            this.lblPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(511, 187);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(100, 23);
-            this.lblPrice.TabIndex = 0;
-            this.lblPrice.Text = "----";
+            this.lblSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSim.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSim.Location = new System.Drawing.Point(511, 122);
+            this.lblSim.Name = "lblSim";
+            this.lblSim.Size = new System.Drawing.Size(100, 23);
+            this.lblSim.TabIndex = 0;
+            this.lblSim.Text = "----";
+            // 
+            // lblFinger
+            // 
+            this.lblFinger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblFinger.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinger.Location = new System.Drawing.Point(511, 89);
+            this.lblFinger.Name = "lblFinger";
+            this.lblFinger.Size = new System.Drawing.Size(100, 23);
+            this.lblFinger.TabIndex = 0;
+            this.lblFinger.Text = "----";
+            // 
+            // lblFront
+            // 
+            this.lblFront.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblFront.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFront.Location = new System.Drawing.Point(511, 57);
+            this.lblFront.Name = "lblFront";
+            this.lblFront.Size = new System.Drawing.Size(100, 23);
+            this.lblFront.TabIndex = 0;
+            this.lblFront.Text = "----";
+            // 
+            // lblRear
+            // 
+            this.lblRear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRear.Location = new System.Drawing.Point(511, 23);
+            this.lblRear.Name = "lblRear";
+            this.lblRear.Size = new System.Drawing.Size(100, 23);
+            this.lblRear.TabIndex = 0;
+            this.lblRear.Text = "----";
+            // 
+            // label18
+            // 
+            this.label18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(200, 23);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(100, 23);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "----";
+            // 
+            // label25
+            // 
+            this.label25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(371, 188);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(100, 23);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "Price:";
+            // 
+            // label24
+            // 
+            this.label24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(371, 157);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(100, 23);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "Battery:";
+            // 
+            // label23
+            // 
+            this.label23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(371, 122);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(135, 23);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "Sim slot:";
+            // 
+            // label22
+            // 
+            this.label22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(371, 89);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(123, 23);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "SoC: ";
+            // 
+            // label21
+            // 
+            this.label21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(371, 57);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(100, 23);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Front Camera:";
+            // 
+            // label20
+            // 
+            this.label20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(371, 23);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(100, 23);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Rear Camera:";
+            // 
+            // label19
+            // 
+            this.label19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(29, 23);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(100, 23);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Brand:";
             // 
             // label1
             // 
