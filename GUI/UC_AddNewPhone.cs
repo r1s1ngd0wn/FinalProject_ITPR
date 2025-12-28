@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing; // Required for dynamic spacing
+using System.Drawing;
 using System.Windows.Forms;
 using DACK_ITPROJECT.Data;
 
@@ -10,8 +10,7 @@ namespace DACK_ITPROJECT
 {
     public partial class UC_AddNewPhone : UserControl
     {
-        // ⚠️ CONNECTION STRING
-        private string connectionString = @"Data Source=.;Initial Catalog=PhoneStore_V6;Integrated Security=True";
+        private readonly string connectionString = DACK_ITPROJECT.Data.DbConfig.ConnectionString;
 
         public UC_AddNewPhone()
         {
@@ -52,25 +51,31 @@ namespace DACK_ITPROJECT
             InitAccessoryDropdowns();
         }
 
-        // =========================================================
-        //                 TAB 2: ACCESSORY LOGIC
-        // =========================================================
-
         private void InitAccessoryDropdowns()
         {
-            // Set Accessory Types
-            cboAccType.Items.Clear();
-            cboAccType.Items.AddRange(new string[] { "Sạc + Cáp", "Sạc dự phòng", "Tai nghe" });
+            if (label30 != null) label30.Location = new Point(6, 100);            
+            if (txtAccessoryName != null) txtAccessoryName.Location = new Point(182, 100); 
 
-            // Set Length Options
+            if (label31 != null) label31.Location = new Point(6, 140);             
+            if (txtAccessoryID != null) txtAccessoryID.Location = new Point(182, 140);    
+
+            // Ensure they are visible
+            if (label30 != null) label30.Visible = true;
+            if (label31 != null) label31.Visible = true;
+            if (txtAccessoryName != null) txtAccessoryName.Visible = true;
+            if (txtAccessoryID != null) txtAccessoryID.Visible = true;
+
+            // Setup Dropdowns
+            cboAccType.Items.Clear();
+            cboAccType.Items.AddRange(new string[] { "Charger Combo", "Power Bank", "Headphones", "Sạc + Cáp", "Sạc dự phòng", "Tai nghe" });
+
             cboCableLength.Items.Clear();
             cboCableLength.Items.AddRange(new string[] { "0.5m", "1m", "1.5m", "2m", "3m" });
 
-            // Set Wattage Options
             cboWattage.Items.Clear();
             cboWattage.Items.AddRange(new string[] { "5W", "10W", "12W", "15W", "18W", "20W", "25W", "30W", "45W", "65W", "100W", "120W" });
 
-            // Hide everything initially
+            // Initialize Dynamic Layout
             HideAllAccessoryControls();
             UpdateAccessoryLayout();
         }
@@ -78,28 +83,31 @@ namespace DACK_ITPROJECT
         private void CboAccType_SelectedIndexChanged(object sender, EventArgs e)
         {
             HideAllAccessoryControls();
-            string type = cboAccType.SelectedItem?.ToString();
+            string type = cboAccType.SelectedItem?.ToString() ?? "";
 
-            if (type == "Sạc + Cáp")
+            // normalize to lower for checks
+            string t = type.ToLowerInvariant();
+
+            if (t.Contains("sac") || t.Contains("charger"))
             {
-                // Sạc + Cáp: Show Length, Wattage, Connection
+                // Charger Combo: Show Length, Wattage, Connection
                 SetControlVisibility(label26, cboCableLength, true);      // Length
                 SetControlVisibility(label27, cboWattage, true);          // Wattage
                 SetControlVisibility(label28, cboConnectionType, true);   // Connection
 
                 UpdateConnectionList(new string[] { "Type-C", "Lightning", "Micro-USB", "Type-C to Lightning" });
             }
-            else if (type == "Sạc dự phòng")
+            else if (t.Contains("power") || t.Contains("dự phòng") || t.Contains("sacduphong") || t.Contains("sạc dự phòng"))
             {
-                // Sạc dự phòng: Show Connection, Capacity
+                // Power Bank: Show Connection, Capacity
                 SetControlVisibility(label28, cboConnectionType, true);   // Connection
                 SetControlVisibility(label29, txtCapacity, true);         // Capacity
 
                 UpdateConnectionList(new string[] { "Type-A", "Type-C", "Wireless (MagSafe)" });
             }
-            else if (type == "Tai nghe")
+            else if (t.Contains("head") || t.Contains("tai") || t.Contains("ear") || t.Contains("tai nghe"))
             {
-                // Tai nghe: Always show Connection first
+                // Headphones: Always show Connection first
                 SetControlVisibility(label28, cboConnectionType, true);
 
                 UpdateConnectionList(new string[] { "Wired (Có dây)", "Wireless (Bluetooth)" });
@@ -114,7 +122,8 @@ namespace DACK_ITPROJECT
         private void CboConnectionType_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Logic specifically for Headphones
-            if (cboAccType.SelectedItem?.ToString() == "Tai nghe")
+            string accType = cboAccType.SelectedItem?.ToString() ?? "";
+            if (accType.ToLowerInvariant().Contains("head") || accType.ToLowerInvariant().Contains("tai"))
             {
                 string conn = cboConnectionType.SelectedItem?.ToString();
 
@@ -124,7 +133,7 @@ namespace DACK_ITPROJECT
 
                 if (!string.IsNullOrEmpty(conn))
                 {
-                    if (conn.Contains("Wired") || conn.Contains("Có dây"))
+                    if (conn.ToLowerInvariant().Contains("wired") || conn.Contains("Có dây"))
                     {
                         // Wired -> Show Cable Length
                         SetControlVisibility(label26, cboCableLength, true);
@@ -139,44 +148,45 @@ namespace DACK_ITPROJECT
             }
         }
 
-        // --- DYNAMIC LAYOUT ENGINE ---
+        // DYNAMIC LAYOUT ENGINE
         private void UpdateAccessoryLayout()
         {
-            // This function stacks visible controls neatly to fix spacing issues
-            int currentY = 90; // Starting Y position (below the Title)
-            int gap = 45;      // Vertical gap between rows
+            // 1. Start Dynamic Y at 180 to clear the moved Static Fields (which now end at ~160)
+            int currentY = 180;
+            int gap = 40;
 
-            // Define the visual order of rows
+            // 2. Only dynamic fields in this list (Static Name/ID are handled in Init)
             var rows = new List<(Control label, Control input)>
             {
-                (label25, cboAccType),         // 1. Accessory Type
-                (label28, cboConnectionType),  // 2. Connection
-                (label26, cboCableLength),     // 3. Length
-                (label27, cboWattage),         // 4. Wattage
-                (label29, txtCapacity)         // 5. Capacity
+                (label25, cboAccType),        // 1. Accessory Type
+                (label28, cboConnectionType), // 2. Connection
+                (label26, cboCableLength),    // 3. Length
+                (label27, cboWattage),        // 4. Wattage
+                (label29, txtCapacity)        // 5. Capacity
             };
 
             foreach (var row in rows)
             {
-                // Only move if the INPUT control is visible (Label usually follows suit)
                 if (row.input != null && row.input.Visible)
                 {
                     if (row.label != null)
-                        row.label.Location = new Point(row.label.Location.X, currentY + 3); // slight offset for alignment
-
+                    {
+                        row.label.Location = new Point(row.label.Location.X, currentY + 3);
+                        row.label.Visible = true;
+                    }
                     row.input.Location = new Point(row.input.Location.X, currentY);
-
                     currentY += gap;
+                }
+                else
+                {
+                    if (row.label != null) row.label.Visible = false;
                 }
             }
 
-            // Move Buttons to the bottom of the stack
+            // 3. Move Buttons to the bottom
             int buttonY = currentY + 20;
-            if (btnAddAccessory != null)
-                btnAddAccessory.Location = new Point(btnAddAccessory.Location.X, buttonY);
-
-            if (btnUndoAll != null)
-                btnUndoAll.Location = new Point(btnUndoAll.Location.X, buttonY);
+            if (btnAddAccessory != null) btnAddAccessory.Location = new Point(btnAddAccessory.Location.X, buttonY);
+            if (btnUndoAll != null) btnUndoAll.Location = new Point(btnUndoAll.Location.X, buttonY);
         }
 
         private void HideAllAccessoryControls()
@@ -185,6 +195,11 @@ namespace DACK_ITPROJECT
             SetControlVisibility(label27, cboWattage, false);
             SetControlVisibility(label28, cboConnectionType, false);
             SetControlVisibility(label29, txtCapacity, false);
+            // Product name/id remain visible by default; do not hide them here
+            if (txtAccessoryName != null) txtAccessoryName.Visible = true;
+            if (txtAccessoryID != null) txtAccessoryID.Visible = true;
+            if (label30 != null) label30.Visible = true;
+            if (label31 != null) label31.Visible = true;
         }
 
         private void SetControlVisibility(Label lbl, Control ctrl, bool visible)
@@ -197,30 +212,92 @@ namespace DACK_ITPROJECT
         {
             cboConnectionType.Items.Clear();
             cboConnectionType.Items.AddRange(items);
-            // Don't auto-select index 0 to force user to choose, or select 0 if preferred
+            // Don't auto-select index 0 to force user to choose
             cboConnectionType.SelectedIndex = -1;
             cboConnectionType.Text = "";
         }
 
         private void BtnAddAccessory_Click(object sender, EventArgs e)
         {
+            // Validate required fields
+            if (string.IsNullOrWhiteSpace(txtAccessoryID.Text) || string.IsNullOrWhiteSpace(txtAccessoryName.Text))
+            {
+                MessageBox.Show("Accessory Product ID and Name are required.");
+                return;
+            }
             if (cboAccType.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select an Accessory Type.");
                 return;
             }
 
-            // TODO: Insert logic for 'sp_ThemPhuKien'
-            string msg = $"Saving Accessory:\nType: {cboAccType.Text}";
-            if (cboConnectionType.Visible) msg += $"\nConnection: {cboConnectionType.Text}";
-            if (cboCableLength.Visible) msg += $"\nLength: {cboCableLength.Text}";
-            if (txtCapacity.Visible) msg += $"\nCapacity: {txtCapacity.Text}";
+            // Map UI selection to DB LoaiPhuKien values: 'Sac', 'SacDuPhong', 'TaiNghe'
+            string sel = cboAccType.SelectedItem?.ToString() ?? "";
+            string selLow = sel.ToLowerInvariant();
+            string dbLoai;
+            if (selLow.Contains("power") || selLow.Contains("dự") || selLow.Contains("duphong") || selLow.Contains("sacduphong") || selLow.Contains("sạc dự phòng"))
+                dbLoai = "SacDuPhong";
+            else if (selLow.Contains("sac") || selLow.Contains("charger"))
+                dbLoai = "Sac";
+            else
+                dbLoai = "TaiNghe";
 
-            MessageBox.Show(msg);
+            // Collect accessory specs (use null or empty if hidden)
+            string chieuDai = cboCableLength.Visible ? cboCableLength.Text : null;
+            string congSuat = cboWattage.Visible ? cboWattage.Text : null;
+            string dungLuong = txtCapacity.Visible ? txtCapacity.Text : null;
+            string kieuKetNoi = cboConnectionType.Visible ? cboConnectionType.Text : null;
+
+            // Stock and prices
+            int soLuong = 0;
+            int.TryParse(txtStockAccessory.Text, out soLuong);
+
+            decimal giaBan = 0;
+            decimal.TryParse(txtSellingPriceAccesscory.Text, out giaBan);
+
+            decimal giaNhap = 0;
+            decimal.TryParse(txtImportPriceAccesscory.Text, out giaNhap);
+
+            // Execute stored procedure sp_ThemPhuKien
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_ThemPhuKien", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@MaSP", txtAccessoryID.Text.Trim());
+                        cmd.Parameters.AddWithValue("@TenSP", txtAccessoryName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@MaThuongHieu", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@LoaiPhuKien", dbLoai);
+                        cmd.Parameters.AddWithValue("@ChieuDaiDay", (object)chieuDai ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@CongSuat", (object)congSuat ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@DungLuong", (object)dungLuong ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@KieuKetNoi", (object)kieuKetNoi ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@SoLuong", soLuong);
+                        cmd.Parameters.AddWithValue("@GiaBan", giaBan);
+                        cmd.Parameters.AddWithValue("@GiaNhap", giaNhap);
+                        //cmd.Parameters.AddWithValue("@HinhAnh", DBNull.Value);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Accessory saved successfully.");
+                BtnUndoAll_Click(null, null); // Reset fields
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving accessory: " + ex.Message);
+            }
         }
 
         private void BtnUndoAll_Click(object sender, EventArgs e)
         {
+            // Reset accessory inputs including Product Name / ID
+            txtAccessoryName.Text = "";
+            txtAccessoryID.Text = "";
             cboAccType.SelectedIndex = -1;
             cboConnectionType.SelectedIndex = -1;
             cboCableLength.SelectedIndex = -1;
@@ -229,10 +306,6 @@ namespace DACK_ITPROJECT
             HideAllAccessoryControls();
             UpdateAccessoryLayout();
         }
-
-        // =========================================================
-        //                 TAB 1: PHONE LOGIC
-        // =========================================================
 
         private void LoadComboBoxData()
         {

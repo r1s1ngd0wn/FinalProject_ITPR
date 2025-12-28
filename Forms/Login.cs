@@ -11,6 +11,8 @@ namespace DACK_ITPROJECT
         // ⚠️ CONFIRM CONNECTION STRING
         private string connectionString = @"Data Source=.;Initial Catalog=PhoneStore_V6;Integrated Security=True";
 
+        string currentId = SessionManager.CurrentLoggedInEmployeeId;
+
         public Login()
         {
             InitializeComponent();
@@ -54,6 +56,8 @@ namespace DACK_ITPROJECT
                                 // 1. Get Role and Name
                                 string role = reader["ChucVu"].ToString(); // e.g., "Admin" or "Staff"
                                 string name = reader["HoTen"].ToString();
+
+                                SessionManager.CurrentLoggedInEmployeeId = username;
 
                                 // 2. Optional: Check if account is active (Soft Delete Check)
                                 // If your DB has a 'TrangThai' column (1=Active, 0=Disabled)

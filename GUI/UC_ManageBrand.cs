@@ -3,13 +3,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using DACK_ITPROJECT.Data;
 
 namespace DACK_ITPROJECT.GUI
 {
     public partial class UC_ManageBrand : UserControl
     {
-        // ⚠️ CONFIRM CONNECTION STRING
-        private string connectionString = @"Data Source=.;Initial Catalog=PhoneStore_V6;Integrated Security=True";
+        private readonly string connectionString = DACK_ITPROJECT.Data.DbConfig.ConnectionString;
 
         public UC_ManageBrand()
         {
@@ -17,14 +17,12 @@ namespace DACK_ITPROJECT.GUI
             this.Load += UC_ManageBrand_Load;
 
             // Link Buttons
-            // Ensure these match your Designer names exactly
             if (this.Controls.Find("btnAddBrand", true).Length > 0)
                 this.Controls.Find("btnAddBrand", true)[0].Click += btnAddBrand_Click;
 
             if (this.Controls.Find("btnRemoveBrand", true).Length > 0)
                 this.Controls.Find("btnRemoveBrand", true)[0].Click += btnRemoveBrand_Click;
 
-            // Search box for Tab 2 (optional, assuming textBox2 is for search)
             if (this.Controls.Find("textBox2", true).Length > 0)
                 this.Controls.Find("textBox2", true)[0].TextChanged += txtSearchRemove_TextChanged;
         }

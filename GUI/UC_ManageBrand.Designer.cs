@@ -121,7 +121,7 @@
             this.txtRemoveBrand.Padding = new System.Windows.Forms.Padding(3);
             this.txtRemoveBrand.Size = new System.Drawing.Size(842, 574);
             this.txtRemoveBrand.TabIndex = 1;
-            this.txtRemoveBrand.Text = "tabPage2";
+            this.txtRemoveBrand.Text = "Delete Brand";
             this.txtRemoveBrand.UseVisualStyleBackColor = true;
             this.txtRemoveBrand.Click += new System.EventHandler(this.btnRemoveBrand_Click);
             // 

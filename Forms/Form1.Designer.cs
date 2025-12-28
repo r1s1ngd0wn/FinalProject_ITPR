@@ -30,16 +30,17 @@
         {
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panelCenter = new System.Windows.Forms.Panel();
-            this.btnAddPhone = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnCustomer = new System.Windows.Forms.Button();
-            this.btnStock = new System.Windows.Forms.Button();
-            this.btnCustomerRecords = new System.Windows.Forms.Button();
-            this.btnDelPhoneRec = new System.Windows.Forms.Button();
-            this.btnMinimize = new System.Windows.Forms.Button();
             this.btnManageBrand = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnManageEmployee = new System.Windows.Forms.Button();
+            this.btnMinimize = new System.Windows.Forms.Button();
+            this.btnDelPhoneRec = new System.Windows.Forms.Button();
+            this.btnCustomerRecords = new System.Windows.Forms.Button();
+            this.btnStock = new System.Windows.Forms.Button();
+            this.btnCustomer = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnAddPhone = new System.Windows.Forms.Button();
+            this.btnStatistic = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,109 +53,6 @@
             this.panelCenter.Size = new System.Drawing.Size(1135, 768);
             this.panelCenter.TabIndex = 1;
             // 
-            // btnAddPhone
-            // 
-            this.btnAddPhone.FlatAppearance.BorderSize = 0;
-            this.btnAddPhone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPhone.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddPhone.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAddPhone.Image = global::DACK_ITPROJECT.Properties.Resources.add_to_cart__1_;
-            this.btnAddPhone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddPhone.Location = new System.Drawing.Point(23, 59);
-            this.btnAddPhone.Name = "btnAddPhone";
-            this.btnAddPhone.Size = new System.Drawing.Size(181, 59);
-            this.btnAddPhone.TabIndex = 0;
-            this.btnAddPhone.Text = "AddPhone";
-            this.btnAddPhone.UseVisualStyleBackColor = true;
-            this.btnAddPhone.Click += new System.EventHandler(this.btnAddPhone_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Image = global::DACK_ITPROJECT.Properties.Resources.close;
-            this.btnExit.Location = new System.Drawing.Point(0, 3);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(51, 40);
-            this.btnExit.TabIndex = 1;
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnCustomer
-            // 
-            this.btnCustomer.FlatAppearance.BorderSize = 0;
-            this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomer.ForeColor = System.Drawing.Color.Black;
-            this.btnCustomer.Image = global::DACK_ITPROJECT.Properties.Resources.customer_service;
-            this.btnCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCustomer.Location = new System.Drawing.Point(26, 124);
-            this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(181, 37);
-            this.btnCustomer.TabIndex = 3;
-            this.btnCustomer.Text = "Customers ";
-            this.btnCustomer.UseVisualStyleBackColor = true;
-            // 
-            // btnStock
-            // 
-            this.btnStock.FlatAppearance.BorderSize = 0;
-            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStock.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStock.ForeColor = System.Drawing.Color.Black;
-            this.btnStock.Image = global::DACK_ITPROJECT.Properties.Resources.ready_stock;
-            this.btnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStock.Location = new System.Drawing.Point(26, 167);
-            this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(181, 49);
-            this.btnStock.TabIndex = 4;
-            this.btnStock.Text = "Stock";
-            this.btnStock.UseVisualStyleBackColor = true;
-            // 
-            // btnCustomerRecords
-            // 
-            this.btnCustomerRecords.FlatAppearance.BorderSize = 0;
-            this.btnCustomerRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCustomerRecords.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomerRecords.ForeColor = System.Drawing.Color.Black;
-            this.btnCustomerRecords.Image = global::DACK_ITPROJECT.Properties.Resources.search;
-            this.btnCustomerRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCustomerRecords.Location = new System.Drawing.Point(29, 222);
-            this.btnCustomerRecords.Name = "btnCustomerRecords";
-            this.btnCustomerRecords.Size = new System.Drawing.Size(221, 52);
-            this.btnCustomerRecords.TabIndex = 5;
-            this.btnCustomerRecords.Text = "Customer Record\'s";
-            this.btnCustomerRecords.UseVisualStyleBackColor = true;
-            // 
-            // btnDelPhoneRec
-            // 
-            this.btnDelPhoneRec.FlatAppearance.BorderSize = 0;
-            this.btnDelPhoneRec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelPhoneRec.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelPhoneRec.ForeColor = System.Drawing.Color.Black;
-            this.btnDelPhoneRec.Image = global::DACK_ITPROJECT.Properties.Resources.delete;
-            this.btnDelPhoneRec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelPhoneRec.Location = new System.Drawing.Point(26, 280);
-            this.btnDelPhoneRec.Name = "btnDelPhoneRec";
-            this.btnDelPhoneRec.Size = new System.Drawing.Size(221, 61);
-            this.btnDelPhoneRec.TabIndex = 6;
-            this.btnDelPhoneRec.Text = "Delete Phone Record";
-            this.btnDelPhoneRec.UseVisualStyleBackColor = true;
-            this.btnDelPhoneRec.Click += new System.EventHandler(this.btnDelPhoneRec_Click);
-            // 
-            // btnMinimize
-            // 
-            this.btnMinimize.FlatAppearance.BorderSize = 0;
-            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.ForeColor = System.Drawing.Color.Transparent;
-            this.btnMinimize.Image = global::DACK_ITPROJECT.Properties.Resources.minimize;
-            this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMinimize.Location = new System.Drawing.Point(57, 3);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(45, 42);
-            this.btnMinimize.TabIndex = 2;
-            this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
-            // 
             // btnManageBrand
             // 
             this.btnManageBrand.FlatAppearance.BorderSize = 0;
@@ -162,7 +60,7 @@
             this.btnManageBrand.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManageBrand.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnManageBrand.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManageBrand.Location = new System.Drawing.Point(29, 347);
+            this.btnManageBrand.Location = new System.Drawing.Point(26, 412);
             this.btnManageBrand.Name = "btnManageBrand";
             this.btnManageBrand.Size = new System.Drawing.Size(181, 59);
             this.btnManageBrand.TabIndex = 7;
@@ -172,6 +70,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.CadetBlue;
+            this.panelMenu.Controls.Add(this.btnStatistic);
             this.panelMenu.Controls.Add(this.btnManageEmployee);
             this.panelMenu.Controls.Add(this.btnManageBrand);
             this.panelMenu.Controls.Add(this.btnMinimize);
@@ -195,13 +94,131 @@
             this.btnManageEmployee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManageEmployee.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnManageEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManageEmployee.Location = new System.Drawing.Point(29, 412);
+            this.btnManageEmployee.Location = new System.Drawing.Point(26, 477);
             this.btnManageEmployee.Name = "btnManageEmployee";
             this.btnManageEmployee.Size = new System.Drawing.Size(181, 59);
             this.btnManageEmployee.TabIndex = 8;
             this.btnManageEmployee.Text = "Manage Employees";
             this.btnManageEmployee.UseVisualStyleBackColor = true;
             this.btnManageEmployee.Click += new System.EventHandler(this.btnManageEmployee_Click);
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.ForeColor = System.Drawing.Color.Transparent;
+            this.btnMinimize.Image = global::DACK_ITPROJECT.Properties.Resources.minimize;
+            this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMinimize.Location = new System.Drawing.Point(57, 3);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(45, 42);
+            this.btnMinimize.TabIndex = 2;
+            this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            // 
+            // btnDelPhoneRec
+            // 
+            this.btnDelPhoneRec.FlatAppearance.BorderSize = 0;
+            this.btnDelPhoneRec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelPhoneRec.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelPhoneRec.ForeColor = System.Drawing.Color.Black;
+            this.btnDelPhoneRec.Image = global::DACK_ITPROJECT.Properties.Resources.delete;
+            this.btnDelPhoneRec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelPhoneRec.Location = new System.Drawing.Point(26, 280);
+            this.btnDelPhoneRec.Name = "btnDelPhoneRec";
+            this.btnDelPhoneRec.Size = new System.Drawing.Size(221, 61);
+            this.btnDelPhoneRec.TabIndex = 6;
+            this.btnDelPhoneRec.Text = "Delete Item Record";
+            this.btnDelPhoneRec.UseVisualStyleBackColor = true;
+            this.btnDelPhoneRec.Click += new System.EventHandler(this.btnDelPhoneRec_Click);
+            // 
+            // btnCustomerRecords
+            // 
+            this.btnCustomerRecords.FlatAppearance.BorderSize = 0;
+            this.btnCustomerRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCustomerRecords.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomerRecords.ForeColor = System.Drawing.Color.Black;
+            this.btnCustomerRecords.Image = global::DACK_ITPROJECT.Properties.Resources.search;
+            this.btnCustomerRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCustomerRecords.Location = new System.Drawing.Point(29, 222);
+            this.btnCustomerRecords.Name = "btnCustomerRecords";
+            this.btnCustomerRecords.Size = new System.Drawing.Size(221, 52);
+            this.btnCustomerRecords.TabIndex = 5;
+            this.btnCustomerRecords.Text = "Customer Record\'s";
+            this.btnCustomerRecords.UseVisualStyleBackColor = true;
+            // 
+            // btnStock
+            // 
+            this.btnStock.FlatAppearance.BorderSize = 0;
+            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStock.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStock.ForeColor = System.Drawing.Color.Black;
+            this.btnStock.Image = global::DACK_ITPROJECT.Properties.Resources.ready_stock;
+            this.btnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStock.Location = new System.Drawing.Point(26, 167);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.Size = new System.Drawing.Size(181, 49);
+            this.btnStock.TabIndex = 4;
+            this.btnStock.Text = "Stock";
+            this.btnStock.UseVisualStyleBackColor = true;
+            // 
+            // btnCustomer
+            // 
+            this.btnCustomer.FlatAppearance.BorderSize = 0;
+            this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomer.ForeColor = System.Drawing.Color.Black;
+            this.btnCustomer.Image = global::DACK_ITPROJECT.Properties.Resources.customer_service;
+            this.btnCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCustomer.Location = new System.Drawing.Point(26, 124);
+            this.btnCustomer.Name = "btnCustomer";
+            this.btnCustomer.Size = new System.Drawing.Size(181, 37);
+            this.btnCustomer.TabIndex = 3;
+            this.btnCustomer.Text = "Customers ";
+            this.btnCustomer.UseVisualStyleBackColor = true;
+            // 
+            // btnExit
+            // 
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Image = global::DACK_ITPROJECT.Properties.Resources.close;
+            this.btnExit.Location = new System.Drawing.Point(0, 3);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(51, 40);
+            this.btnExit.TabIndex = 1;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnAddPhone
+            // 
+            this.btnAddPhone.FlatAppearance.BorderSize = 0;
+            this.btnAddPhone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPhone.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPhone.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAddPhone.Image = global::DACK_ITPROJECT.Properties.Resources.add_to_cart__1_;
+            this.btnAddPhone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddPhone.Location = new System.Drawing.Point(23, 59);
+            this.btnAddPhone.Name = "btnAddPhone";
+            this.btnAddPhone.Size = new System.Drawing.Size(181, 59);
+            this.btnAddPhone.TabIndex = 0;
+            this.btnAddPhone.Text = "AddPhone";
+            this.btnAddPhone.UseVisualStyleBackColor = true;
+            this.btnAddPhone.Click += new System.EventHandler(this.btnAddPhone_Click);
+            // 
+            // btnStatistic
+            // 
+            this.btnStatistic.FlatAppearance.BorderSize = 0;
+            this.btnStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStatistic.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatistic.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnStatistic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStatistic.Location = new System.Drawing.Point(29, 347);
+            this.btnStatistic.Name = "btnStatistic";
+            this.btnStatistic.Size = new System.Drawing.Size(181, 59);
+            this.btnStatistic.TabIndex = 9;
+            this.btnStatistic.Text = "Statistics";
+            this.btnStatistic.UseVisualStyleBackColor = true;
+            this.btnStatistic.Click += new System.EventHandler(this.btnStatistic_Click);
             // 
             // Form1
             // 
@@ -235,6 +252,7 @@
         private System.Windows.Forms.Button btnManageBrand;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button btnManageEmployee;
+        private System.Windows.Forms.Button btnStatistic;
     }
 }
 

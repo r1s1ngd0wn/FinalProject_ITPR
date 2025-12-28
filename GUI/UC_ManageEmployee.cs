@@ -2,14 +2,12 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using DACK_ITPROJECT.Data; // Optional if you use DbHelper
-
+using DACK_ITPROJECT.Data;
 namespace DACK_ITPROJECT.GUI
 {
     public partial class UC_ManageEmployee : UserControl
     {
-        // ⚠️ CONFIRM CONNECTION STRING
-        private string connectionString = @"Data Source=.;Initial Catalog=PhoneStore_V6;Integrated Security=True";
+        private readonly string connectionString = DACK_ITPROJECT.Data.DbConfig.ConnectionString;
 
         // Variable to store the ID of the employee we are currently editing
         private string selectedId = null;
@@ -88,7 +86,6 @@ namespace DACK_ITPROJECT.GUI
                 {
                     conn.Open();
 
-                    // ⚠️ CHANGE 1: Only look for IDs starting with 'NV' (avoids 'admin' username issues)
                     string query = "SELECT TOP 1 MaNhanVien FROM NHAN_VIEN WHERE MaNhanVien LIKE 'NV%' ORDER BY LEN(MaNhanVien) DESC, MaNhanVien DESC";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
@@ -105,7 +102,6 @@ namespace DACK_ITPROJECT.GUI
                         }
                     }
 
-                    // ⚠️ CHANGE 2: If no NV-IDs exist, start at NV02 (assuming NV01 is reserved/admin)
                     return "NV02";
                 }
             }

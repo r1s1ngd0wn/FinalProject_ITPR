@@ -31,7 +31,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnUndo = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.txtBattery = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -58,7 +57,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.cboBrand = new System.Windows.Forms.ComboBox();
             this.txtSellPrice = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
             this.cboInternalStorage = new System.Windows.Forms.ComboBox();
             this.cboDisplayType = new System.Windows.Forms.ComboBox();
             this.cboSimSlot = new System.Windows.Forms.ComboBox();
@@ -76,8 +74,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.cboAccType = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -88,8 +84,22 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.txtCapacity = new System.Windows.Forms.TextBox();
-            this.btnAddAccessory = new System.Windows.Forms.Button();
+            this.btnUndo = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnUndoAll = new System.Windows.Forms.Button();
+            this.btnAddAccessory = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtAccessoryID = new System.Windows.Forms.TextBox();
+            this.txtAccessoryName = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.txtStockAccessory = new System.Windows.Forms.TextBox();
+            this.txtImportPriceAccesscory = new System.Windows.Forms.TextBox();
+            this.txtSellingPriceAccesscory = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -158,11 +168,21 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(842, 574);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Add phone/tablet";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txtSellingPriceAccesscory);
+            this.tabPage2.Controls.Add(this.txtImportPriceAccesscory);
+            this.tabPage2.Controls.Add(this.txtStockAccessory);
+            this.tabPage2.Controls.Add(this.label34);
+            this.tabPage2.Controls.Add(this.label33);
+            this.tabPage2.Controls.Add(this.label32);
+            this.tabPage2.Controls.Add(this.txtAccessoryName);
+            this.tabPage2.Controls.Add(this.txtAccessoryID);
+            this.tabPage2.Controls.Add(this.label31);
+            this.tabPage2.Controls.Add(this.label30);
             this.tabPage2.Controls.Add(this.btnUndoAll);
             this.tabPage2.Controls.Add(this.btnAddAccessory);
             this.tabPage2.Controls.Add(this.txtCapacity);
@@ -181,18 +201,8 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(842, 574);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Add accessories";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // btnUndo
-            // 
-            this.btnUndo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnUndo.Image = global::DACK_ITPROJECT.Properties.Resources.close;
-            this.btnUndo.Location = new System.Drawing.Point(671, 488);
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(52, 32);
-            this.btnUndo.TabIndex = 78;
-            this.btnUndo.UseVisualStyleBackColor = true;
             // 
             // label23
             // 
@@ -424,16 +434,6 @@
             this.txtSellPrice.Size = new System.Drawing.Size(160, 20);
             this.txtSellPrice.TabIndex = 52;
             // 
-            // btnSave
-            // 
-            this.btnSave.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSave.Image = global::DACK_ITPROJECT.Properties.Resources.diskette;
-            this.btnSave.Location = new System.Drawing.Point(745, 488);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(52, 32);
-            this.btnSave.TabIndex = 51;
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
             // cboInternalStorage
             // 
             this.cboInternalStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -606,36 +606,6 @@
             this.label2.TabIndex = 45;
             this.label2.Text = "Company : ";
             // 
-            // label1
-            // 
-            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.label1.Image = global::DACK_ITPROJECT.Properties.Resources.iphone__1_;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(6, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(326, 88);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "New Phone";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label24
-            // 
-            this.label24.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.label24.Image = global::DACK_ITPROJECT.Properties.Resources.iphone__1_;
-            this.label24.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label24.Location = new System.Drawing.Point(-1, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(326, 88);
-            this.label24.TabIndex = 34;
-            this.label24.Text = "New Accessory";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // cboAccType
             // 
             this.cboAccType.FormattingEnabled = true;
@@ -643,7 +613,7 @@
             "Headphones",
             "Charger Combo",
             "Power Bank"});
-            this.cboAccType.Location = new System.Drawing.Point(182, 97);
+            this.cboAccType.Location = new System.Drawing.Point(182, 140);
             this.cboAccType.Name = "cboAccType";
             this.cboAccType.Size = new System.Drawing.Size(174, 21);
             this.cboAccType.TabIndex = 35;
@@ -651,7 +621,7 @@
             // label25
             // 
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(6, 95);
+            this.label25.Location = new System.Drawing.Point(6, 138);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(154, 28);
             this.label25.TabIndex = 65;
@@ -660,7 +630,7 @@
             // label26
             // 
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(6, 132);
+            this.label26.Location = new System.Drawing.Point(6, 175);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(154, 28);
             this.label26.TabIndex = 66;
@@ -669,7 +639,7 @@
             // label27
             // 
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(6, 167);
+            this.label27.Location = new System.Drawing.Point(6, 210);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(154, 28);
             this.label27.TabIndex = 67;
@@ -682,7 +652,7 @@
             "0.5 m",
             "1 m",
             "2 m"});
-            this.cboCableLength.Location = new System.Drawing.Point(182, 134);
+            this.cboCableLength.Location = new System.Drawing.Point(182, 177);
             this.cboCableLength.Name = "cboCableLength";
             this.cboCableLength.Size = new System.Drawing.Size(174, 21);
             this.cboCableLength.TabIndex = 68;
@@ -699,7 +669,7 @@
             "30w",
             "67w",
             "120w"});
-            this.cboWattage.Location = new System.Drawing.Point(182, 169);
+            this.cboWattage.Location = new System.Drawing.Point(182, 212);
             this.cboWattage.Name = "cboWattage";
             this.cboWattage.Size = new System.Drawing.Size(174, 21);
             this.cboWattage.TabIndex = 69;
@@ -712,7 +682,7 @@
             "Bluetooth",
             "Type-C",
             "Type-A"});
-            this.cboConnectionType.Location = new System.Drawing.Point(182, 205);
+            this.cboConnectionType.Location = new System.Drawing.Point(182, 248);
             this.cboConnectionType.Name = "cboConnectionType";
             this.cboConnectionType.Size = new System.Drawing.Size(174, 21);
             this.cboConnectionType.TabIndex = 70;
@@ -720,7 +690,7 @@
             // label28
             // 
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(6, 198);
+            this.label28.Location = new System.Drawing.Point(6, 241);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(154, 28);
             this.label28.TabIndex = 71;
@@ -729,7 +699,7 @@
             // label29
             // 
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(6, 226);
+            this.label29.Location = new System.Drawing.Point(6, 269);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(154, 28);
             this.label29.TabIndex = 72;
@@ -737,30 +707,160 @@
             // 
             // txtCapacity
             // 
-            this.txtCapacity.Location = new System.Drawing.Point(182, 234);
+            this.txtCapacity.Location = new System.Drawing.Point(182, 277);
             this.txtCapacity.Name = "txtCapacity";
             this.txtCapacity.Size = new System.Drawing.Size(174, 20);
             this.txtCapacity.TabIndex = 73;
             // 
-            // btnAddAccessory
+            // btnUndo
             // 
-            this.btnAddAccessory.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAddAccessory.Image = global::DACK_ITPROJECT.Properties.Resources.diskette;
-            this.btnAddAccessory.Location = new System.Drawing.Point(84, 267);
-            this.btnAddAccessory.Name = "btnAddAccessory";
-            this.btnAddAccessory.Size = new System.Drawing.Size(52, 32);
-            this.btnAddAccessory.TabIndex = 74;
-            this.btnAddAccessory.UseVisualStyleBackColor = true;
+            this.btnUndo.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnUndo.Image = global::DACK_ITPROJECT.Properties.Resources.close;
+            this.btnUndo.Location = new System.Drawing.Point(671, 488);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(52, 32);
+            this.btnUndo.TabIndex = 78;
+            this.btnUndo.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnSave.Image = global::DACK_ITPROJECT.Properties.Resources.diskette;
+            this.btnSave.Location = new System.Drawing.Point(745, 488);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(52, 32);
+            this.btnSave.TabIndex = 51;
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.label1.Image = global::DACK_ITPROJECT.Properties.Resources.iphone__1_;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(6, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(326, 88);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "New Phone";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnUndoAll
             // 
             this.btnUndoAll.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnUndoAll.Image = global::DACK_ITPROJECT.Properties.Resources.close;
-            this.btnUndoAll.Location = new System.Drawing.Point(10, 267);
+            this.btnUndoAll.Location = new System.Drawing.Point(6, 493);
             this.btnUndoAll.Name = "btnUndoAll";
             this.btnUndoAll.Size = new System.Drawing.Size(52, 32);
             this.btnUndoAll.TabIndex = 79;
             this.btnUndoAll.UseVisualStyleBackColor = true;
+            // 
+            // btnAddAccessory
+            // 
+            this.btnAddAccessory.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAddAccessory.Image = global::DACK_ITPROJECT.Properties.Resources.diskette;
+            this.btnAddAccessory.Location = new System.Drawing.Point(80, 493);
+            this.btnAddAccessory.Name = "btnAddAccessory";
+            this.btnAddAccessory.Size = new System.Drawing.Size(52, 32);
+            this.btnAddAccessory.TabIndex = 74;
+            this.btnAddAccessory.UseVisualStyleBackColor = true;
+            // 
+            // label24
+            // 
+            this.label24.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.label24.Image = global::DACK_ITPROJECT.Properties.Resources.iphone__1_;
+            this.label24.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label24.Location = new System.Drawing.Point(-1, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(326, 88);
+            this.label24.TabIndex = 34;
+            this.label24.Text = "New Accessory";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label30
+            // 
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(6, 82);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(154, 28);
+            this.label30.TabIndex = 80;
+            this.label30.Text = "Product Name : ";
+            // 
+            // label31
+            // 
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(6, 110);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(154, 28);
+            this.label31.TabIndex = 81;
+            this.label31.Text = "Product ID : ";
+            // 
+            // txtAccessoryID
+            // 
+            this.txtAccessoryID.Location = new System.Drawing.Point(182, 110);
+            this.txtAccessoryID.Name = "txtAccessoryID";
+            this.txtAccessoryID.Size = new System.Drawing.Size(174, 20);
+            this.txtAccessoryID.TabIndex = 82;
+            // 
+            // txtAccessoryName
+            // 
+            this.txtAccessoryName.Location = new System.Drawing.Point(182, 82);
+            this.txtAccessoryName.Name = "txtAccessoryName";
+            this.txtAccessoryName.Size = new System.Drawing.Size(174, 20);
+            this.txtAccessoryName.TabIndex = 83;
+            // 
+            // label32
+            // 
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(6, 377);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(154, 28);
+            this.label32.TabIndex = 84;
+            this.label32.Text = "Stock : ";
+            // 
+            // label33
+            // 
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(6, 405);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(154, 28);
+            this.label33.TabIndex = 85;
+            this.label33.Text = "Import Price : ";
+            // 
+            // label34
+            // 
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(6, 433);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(154, 28);
+            this.label34.TabIndex = 86;
+            this.label34.Text = "Selling Price : ";
+            // 
+            // txtStockAccessory
+            // 
+            this.txtStockAccessory.Location = new System.Drawing.Point(182, 379);
+            this.txtStockAccessory.Name = "txtStockAccessory";
+            this.txtStockAccessory.Size = new System.Drawing.Size(174, 20);
+            this.txtStockAccessory.TabIndex = 87;
+            // 
+            // txtImportPriceAccesscory
+            // 
+            this.txtImportPriceAccesscory.Location = new System.Drawing.Point(182, 413);
+            this.txtImportPriceAccesscory.Name = "txtImportPriceAccesscory";
+            this.txtImportPriceAccesscory.Size = new System.Drawing.Size(174, 20);
+            this.txtImportPriceAccesscory.TabIndex = 88;
+            // 
+            // txtSellingPriceAccesscory
+            // 
+            this.txtSellingPriceAccesscory.Location = new System.Drawing.Point(182, 441);
+            this.txtSellingPriceAccesscory.Name = "txtSellingPriceAccesscory";
+            this.txtSellingPriceAccesscory.Size = new System.Drawing.Size(174, 20);
+            this.txtSellingPriceAccesscory.TabIndex = 89;
             // 
             // UC_AddNewPhone
             // 
@@ -842,5 +942,15 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Button btnUndoAll;
         private System.Windows.Forms.Button btnAddAccessory;
+        private System.Windows.Forms.TextBox txtAccessoryName;
+        private System.Windows.Forms.TextBox txtAccessoryID;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox txtSellingPriceAccesscory;
+        private System.Windows.Forms.TextBox txtImportPriceAccesscory;
+        private System.Windows.Forms.TextBox txtStockAccessory;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
     }
 }

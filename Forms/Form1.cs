@@ -15,7 +15,6 @@ namespace DACK_ITPROJECT
     {
         private string currentUserRole;
 
-        // ⚠️ UPDATED CONSTRUCTOR: Accepts 'role' parameter
         public Form1(string role)
         {
             InitializeComponent();
@@ -45,9 +44,6 @@ namespace DACK_ITPROJECT
             this.btnExit.Click += new EventHandler(this.btnExit_Click);
             this.btnMinimize.Click += new EventHandler(this.btnMinimize_Click);
 
-            // Link New Admin Button (Manage Employee)
-            // Ensure you added a button named 'btnManageEmployee' in the Designer for this to work!
-            // If you haven't added it yet, this check prevents crashes.
             Control[] adminBtns = this.Controls.Find("btnManageEmployee", true);
             if (adminBtns.Length > 0)
             {
@@ -68,8 +64,6 @@ namespace DACK_ITPROJECT
                 Control[] adminBtns = this.Controls.Find("btnManageEmployee", true);
                 if (adminBtns.Length > 0) adminBtns[0].Visible = false;
 
-                // Optional: Hide Manage Brand Button if you want that restricted too
-                // if (this.btnManageBrand != null) this.btnManageBrand.Visible = false;
             }
             else
             {
@@ -134,12 +128,19 @@ namespace DACK_ITPROJECT
             LoadSubForm(new UC_ManageEmployee());
         }
 
+        private void btnStatistic_Click(object sender, EventArgs e)
+        {
+            LoadSubForm(new UC_Statistic());
+        }
         // --- Window Controls ---
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Do you want to exit the application?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            Application.Exit();
+            var confirmResult = MessageBox.Show("Are you sure you want to exit?", "Exit Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -151,7 +152,9 @@ namespace DACK_ITPROJECT
 
         private void btnDelPhoneRec_Click(object sender, EventArgs e)
         {
-            // TODO: Add logic to handle the Delete Phone Record button click
+
         }
+
+        
     }
 }

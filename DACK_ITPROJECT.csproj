@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\ConnectDB.cs" />
+    <Compile Include="Data\DbConfig.cs" />
     <Compile Include="Data\DbHelper.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
@@ -72,6 +73,12 @@
     </Compile>
     <Compile Include="GUI\UC_ManageEmployee.Designer.cs">
       <DependentUpon>UC_ManageEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UC_Statistic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UC_Statistic.Designer.cs">
+      <DependentUpon>UC_Statistic.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,6 +112,7 @@
     <Compile Include="GUI\UC_Stock.Designer.cs">
       <DependentUpon>UC_Stock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\SessionManager.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UC_ManageEmployee.resx">
       <DependentUpon>UC_ManageEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UC_Statistic.resx">
+      <DependentUpon>UC_Statistic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

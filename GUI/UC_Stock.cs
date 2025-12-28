@@ -3,13 +3,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using DACK_ITPROJECT.Data;
 
 namespace DACK_ITPROJECT
 {
     public partial class UC_Stock : UserControl
     {
-        // ⚠️ CONFIRM CONNECTION STRING
-        private string connectionString = @"Data Source=.;Initial Catalog=PhoneStore_V6;Integrated Security=True";
+        private readonly string connectionString = DACK_ITPROJECT.Data.DbConfig.ConnectionString;
 
         public UC_Stock()
         {

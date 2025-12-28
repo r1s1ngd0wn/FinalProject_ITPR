@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
+using DACK_ITPROJECT.Data;
 
 namespace DACK_ITPROJECT
 {
     public partial class UC_Customer : UserControl
     {
-        // ⚠️ CONNECTION STRING
-        private string connectionString = @"Data Source=.;Initial Catalog=PhoneStore_V6;Integrated Security=True";
+        private readonly string connectionString = DACK_ITPROJECT.Data.DbConfig.ConnectionString;
 
         private DataTable cartTable;
         private decimal grandTotal = 0;
@@ -19,37 +19,26 @@ namespace DACK_ITPROJECT
             InitializeComponent();
             InitializeCart();
 
-            // Hook up events
             this.Load += UC_Customer_Load;
 
-            // Search Button
+            // Link Events
             if (this.Controls.Find("btnSearchItem", true).Length > 0)
                 this.Controls.Find("btnSearchItem", true)[0].Click += btnSearchItem_Click;
 
-            // Checkout Button (btnPurchase)
             if (this.Controls.Find("btnPurchase", true).Length > 0)
                 this.Controls.Find("btnPurchase", true)[0].Click += btnPurchase_Click;
 
-            // Clear Cart Button
-            if (btnClearCart != null)
-                btnClearCart.Click += BtnClearCart_Click;
-
-            // Product selection -> update spec panel
-            if (this.Controls.Find("dgvProduct", true).Length > 0)
-            {
-                var grid = (DataGridView)this.Controls.Find("dgvProduct", true)[0];
-                grid.SelectionChanged -= DgvProduct_SelectionChanged;
-                grid.SelectionChanged += DgvProduct_SelectionChanged;
-            }
+            if (this.Controls.Find("btnClearCart", true).Length > 0)
+                this.Controls.Find("btnClearCart", true)[0].Click += BtnClearCart_Click;
         }
 
         private void UC_Customer_Load(object sender, EventArgs e)
         {
             LoadProducts("");
-            CalculateTotal(); // Initialize label
+            CalculateTotal();
         }
 
-        // --- 1. SETUP CART GRID ---
+        // --- 1. SETUP CART ---
         private void InitializeCart()
         {
             cartTable = new DataTable();
@@ -58,15 +47,19 @@ namespace DACK_ITPROJECT
             cartTable.Columns.Add("Price", typeof(decimal));
             cartTable.Columns.Add("Quantity", typeof(int));
             cartTable.Columns.Add("Total", typeof(decimal));
+            cartTable.Columns.Add("Type"); // Stores 'ThietBi' or 'PhuKien'
 
             dgvCart.DataSource = cartTable;
 
+            // Format & Hide Columns
             if (dgvCart.Columns["Price"] != null) dgvCart.Columns["Price"].DefaultCellStyle.Format = "N0";
             if (dgvCart.Columns["Total"] != null) dgvCart.Columns["Total"].DefaultCellStyle.Format = "N0";
+            if (dgvCart.Columns["Type"] != null) dgvCart.Columns["Type"].Visible = false;
+
             dgvCart.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        // --- 2. SEARCH PRODUCTS ---
+        // --- 2. SEARCH ---
         private void btnSearchItem_Click(object sender, EventArgs e)
         {
             LoadProducts(txtSearch.Text.Trim());
@@ -79,6 +72,7 @@ namespace DACK_ITPROJECT
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
+                    // Use the SP from your SQL Script
                     SqlCommand cmd = new SqlCommand("sp_TimKiemSanPham", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Keyword", keyword);
@@ -87,29 +81,20 @@ namespace DACK_ITPROJECT
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 
-                    dgvProduct.DataSource = null;
-                    dgvProduct.Columns.Clear();
                     dgvProduct.DataSource = dt;
                     dgvProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                    var keep = new[] { "TenSanPham", "TenThuongHieu", "RAM", "ROM", "MauSac", "GiaBan", "MaSanPham" };
-                    foreach (DataGridViewColumn col in dgvProduct.Columns.Cast<DataGridViewColumn>().ToArray())
-                    {
-                        if (Array.IndexOf(keep, col.Name) < 0)
-                            dgvProduct.Columns.Remove(col.Name);
-                    }
-
-                    if (dgvProduct.Columns["TenSanPham"] != null) dgvProduct.Columns["TenSanPham"].HeaderText = "Phone Name";
-                    if (dgvProduct.Columns["TenThuongHieu"] != null) dgvProduct.Columns["TenThuongHieu"].HeaderText = "Brand";
-                    if (dgvProduct.Columns["RAM"] != null) dgvProduct.Columns["RAM"].HeaderText = "RAM";
-                    if (dgvProduct.Columns["ROM"] != null) dgvProduct.Columns["ROM"].HeaderText = "ROM";
-                    if (dgvProduct.Columns["MauSac"] != null) dgvProduct.Columns["MauSac"].HeaderText = "Color";
+                    if (dgvProduct.Columns["MaSanPham"] != null) dgvProduct.Columns["MaSanPham"].HeaderText = "ID";
+                    if (dgvProduct.Columns["TenSanPham"] != null) dgvProduct.Columns["TenSanPham"].HeaderText = "Product Name";
                     if (dgvProduct.Columns["GiaBan"] != null)
                     {
                         dgvProduct.Columns["GiaBan"].HeaderText = "Price";
                         dgvProduct.Columns["GiaBan"].DefaultCellStyle.Format = "N0";
                     }
+                    if (dgvProduct.Columns["LoaiSanPham"] != null) dgvProduct.Columns["LoaiSanPham"].Visible = false; // Hide SP-level type
+                    if (dgvProduct.Columns["HinhAnh"] != null) dgvProduct.Columns["HinhAnh"].Visible = false;     // Hide Image URL
 
+                    // Add 'Add to Cart' Button
                     if (!dgvProduct.Columns.Contains("colBtn"))
                     {
                         DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn();
@@ -120,21 +105,15 @@ namespace DACK_ITPROJECT
                         dgvProduct.Columns.Add(btnCol);
                     }
 
+                    // Re-link Grid Events
                     dgvProduct.CellContentClick -= DgvProduct_CellContentClick;
                     dgvProduct.CellContentClick += DgvProduct_CellContentClick;
 
                     dgvProduct.SelectionChanged -= DgvProduct_SelectionChanged;
                     dgvProduct.SelectionChanged += DgvProduct_SelectionChanged;
-
-                    if (dgvProduct.Rows.Count > 0 && dgvProduct.CurrentRow != null)
-                    {
-                        var idObj = dgvProduct.CurrentRow.Cells["MaSanPham"]?.Value;
-                        if (idObj != null) LoadSpecsFromDatabase(idObj.ToString());
-                        else UpdateSpecPanelFromRow(dgvProduct.CurrentRow);
-                    }
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error loading products: " + ex.Message); }
+            catch (Exception ex) { MessageBox.Show("Error loading items: " + ex.Message); }
         }
 
         // --- 3. ADD TO CART ---
@@ -142,19 +121,22 @@ namespace DACK_ITPROJECT
         {
             if (e.RowIndex >= 0 && dgvProduct.Columns[e.ColumnIndex].Name == "colBtn")
             {
+                // Map columns from sp_TimKiemSanPham
                 string id = dgvProduct.Rows[e.RowIndex].Cells["MaSanPham"].Value.ToString();
                 string name = dgvProduct.Rows[e.RowIndex].Cells["TenSanPham"].Value.ToString();
                 decimal price = Convert.ToDecimal(dgvProduct.Rows[e.RowIndex].Cells["GiaBan"].Value);
+                // LoaiSanPham (returned by SP) is 'ThietBi' or 'PhuKien' stored in column LoaiSanPham
+                string loai = dgvProduct.Rows[e.RowIndex].Cells["LoaiSanPham"].Value.ToString();
 
-                AddToCart(id, name, price, 1);
+                AddToCart(id, name, price, 1, loai);
             }
         }
 
-        private void AddToCart(string id, string name, decimal price, int quantity)
+        private void AddToCart(string id, string name, decimal price, int quantity, string type)
         {
             foreach (DataRow row in cartTable.Rows)
             {
-                if (row["ProductID"].ToString() == id)
+                if (row["ProductID"].ToString() == id && row["Type"].ToString() == type)
                 {
                     row["Quantity"] = (int)row["Quantity"] + quantity;
                     row["Total"] = (int)row["Quantity"] * price;
@@ -162,11 +144,10 @@ namespace DACK_ITPROJECT
                     return;
                 }
             }
-            cartTable.Rows.Add(id, name, price, quantity, price * quantity);
+            cartTable.Rows.Add(id, name, price, quantity, price * quantity, type);
             CalculateTotal();
         }
 
-        // --- 4. CLEAR CART LOGIC ---
         private void BtnClearCart_Click(object sender, EventArgs e)
         {
             cartTable.Rows.Clear();
@@ -180,15 +161,10 @@ namespace DACK_ITPROJECT
             {
                 grandTotal += Convert.ToDecimal(row["Total"]);
             }
-
-            // Update Label16 (Total) directly
-            if (label16 != null)
-            {
-                label16.Text = "Total : " + grandTotal.ToString("N0") + " VND";
-            }
+            if (label16 != null) label16.Text = "Total : " + grandTotal.ToString("N0") + " VND";
         }
 
-        // --- 5. CHECKOUT ---
+        // --- 4. CHECKOUT ---
         private void btnPurchase_Click(object sender, EventArgs e)
         {
             if (cartTable.Rows.Count == 0) { MessageBox.Show("Cart is empty."); return; }
@@ -198,12 +174,21 @@ namespace DACK_ITPROJECT
                 return;
             }
 
+            // Retrieve the current employee ID at purchase time to ensure we have the latest session value
+            string currentEmployeeId = SessionManager.CurrentLoggedInEmployeeId;
+            if (string.IsNullOrWhiteSpace(currentEmployeeId))
+            {
+                MessageBox.Show("No logged-in employee found. Please log in before making a purchase.");
+                return;
+            }
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
                 SqlTransaction transaction = conn.BeginTransaction();
                 try
                 {
+                    // 1. Add Customer (Ignore if exists)
                     SqlCommand cmdCust = new SqlCommand("sp_ThemKhachHang", conn, transaction);
                     cmdCust.CommandType = CommandType.StoredProcedure;
                     cmdCust.Parameters.AddWithValue("@SoDienThoai", txtContact.Text);
@@ -213,25 +198,28 @@ namespace DACK_ITPROJECT
                     cmdCust.Parameters.AddWithValue("@Email", txtEmail.Text);
                     cmdCust.ExecuteNonQuery();
 
+                    // 2. Create Invoice
                     string invoiceID = GenerateInvoiceId();
                     SqlCommand cmdHD = new SqlCommand("sp_TaoHoaDon", conn, transaction);
                     cmdHD.CommandType = CommandType.StoredProcedure;
                     cmdHD.Parameters.AddWithValue("@MaHD", invoiceID);
-                    cmdHD.Parameters.AddWithValue("@MaNV", "NV01");
+                    // Use the fresh employee id
+                    cmdHD.Parameters.AddWithValue("@MaNV", currentEmployeeId);
                     cmdHD.Parameters.AddWithValue("@SdtKH", txtContact.Text);
                     cmdHD.Parameters.AddWithValue("@TongTien", grandTotal);
                     cmdHD.Parameters.AddWithValue("@GiamGia", 0);
                     cmdHD.Parameters.AddWithValue("@ThanhToan", grandTotal);
-                    cmdHD.Parameters.AddWithValue("@GhiChu", "");
+                    cmdHD.Parameters.AddWithValue("@GhiChu", "Purchase via App");
                     cmdHD.ExecuteNonQuery();
 
+                    // 3. Add Details & Update Stock
                     foreach (DataRow row in cartTable.Rows)
                     {
                         SqlCommand cmdDet = new SqlCommand("sp_ThemChiTietHoaDon", conn, transaction);
                         cmdDet.CommandType = CommandType.StoredProcedure;
                         cmdDet.Parameters.AddWithValue("@MaHD", invoiceID);
                         cmdDet.Parameters.AddWithValue("@MaSP", row["ProductID"]);
-                        cmdDet.Parameters.AddWithValue("@LoaiSanPham", "ThietBi");
+                        cmdDet.Parameters.AddWithValue("@LoaiSanPham", row["Type"]); // 'ThietBi' or 'PhuKien'
                         cmdDet.Parameters.AddWithValue("@SoLuong", row["Quantity"]);
                         cmdDet.Parameters.AddWithValue("@DonGia", row["Price"]);
                         cmdDet.ExecuteNonQuery();
@@ -239,6 +227,7 @@ namespace DACK_ITPROJECT
 
                     transaction.Commit();
                     MessageBox.Show("Purchase Successful! Invoice: " + invoiceID);
+
                     cartTable.Clear();
                     CalculateTotal();
                     LoadProducts(txtSearch.Text.Trim());
@@ -253,80 +242,156 @@ namespace DACK_ITPROJECT
 
         private string GenerateInvoiceId()
         {
-            string baseId = "hdb" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            string baseId = "HD" + DateTime.Now.ToString("yyMMddHHmm");
             var rnd = new Random();
-            string suffix = rnd.Next(0, 99).ToString("D2");
-            return baseId + suffix;
+            return baseId + rnd.Next(0, 99).ToString("D2");
         }
 
-        // --- SPEC PANEL LOGIC ---
+        // --- 5. SPEC PANEL (Dynamic)
+        // When the selection changes, fetch full details from THIET_BI or PHU_KIEN
         private void DgvProduct_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvProduct.CurrentRow == null) return;
-            var idObj = dgvProduct.CurrentRow.Cells["MaSanPham"]?.Value;
-            var id = idObj != null ? idObj.ToString() : null;
 
-            if (!string.IsNullOrWhiteSpace(id)) LoadSpecsFromDatabase(id);
-            else UpdateSpecPanelFromRow(dgvProduct.CurrentRow);
+            // Safe accessor for current row
+            string GetGrid(string col) =>
+                dgvProduct.Columns.Contains(col) && dgvProduct.CurrentRow.Cells[col].Value != null
+                ? dgvProduct.CurrentRow.Cells[col].Value.ToString() : null;
+
+            string id = GetGrid("MaSanPham");
+            string loaiSanPham = GetGrid("LoaiSanPham"); // 'ThietBi' or 'PhuKien'
+            decimal price = 0; decimal.TryParse(GetGrid("GiaBan") ?? "0", out price);
+
+            // Set price always
+            lblPrice.Text = price.ToString("N0");
+
+            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(loaiSanPham))
+            {
+                // clear
+                lblRam.Text = lblInternalStorage.Text = lblExpandable.Text = "----";
+                lblRam.Visible = lblInternalStorage.Visible = lblExpandable.Visible = true;
+                return;
+            }
+
+            if (loaiSanPham == "ThietBi")
+            {
+                LoadDeviceDetails(id);
+            }
+            else // PhuKien
+            {
+                LoadAccessoryDetails(id);
+            }
         }
 
-        private void LoadSpecsFromDatabase(string maSanPham)
+        // Fetch device (THIET_BI) details and map to labels
+        private void LoadDeviceDetails(string maSP)
         {
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    string sql = @"SELECT RAM, ROM, MauSac, CameraSau, CameraTruoc, GiaBan, Chip FROM THIET_BI WHERE MaSanPham = @id";
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    string q = @"SELECT RAM, ROM, Pin, KichThuocManHinh, DoPhanGiai, CongNgheManHinh, MauSac, HeDieuHanh
+                                 FROM THIET_BI WHERE MaSanPham = @id";
+                    SqlCommand cmd = new SqlCommand(q, conn);
+                    cmd.Parameters.AddWithValue("@id", maSP);
+                    using (SqlDataReader r = cmd.ExecuteReader())
                     {
-                        cmd.Parameters.AddWithValue("@id", maSanPham);
-                        using (SqlDataReader rdr = cmd.ExecuteReader())
+                        if (r.Read())
                         {
-                            if (rdr.Read())
-                            {
-                                Func<string, string> read = col =>
-                                {
-                                    try { var idx = rdr.GetOrdinal(col); return rdr.IsDBNull(idx) ? "----" : rdr.GetValue(idx).ToString(); }
-                                    catch { return "----"; }
-                                };
+                            string ram = r["RAM"] as string ?? "----";
+                            string rom = r["ROM"] as string ?? "----";
+                            string pin = r["Pin"] as string ?? "----";
+                            string screen = r["KichThuocManHinh"] as string ?? null;
+                            string res = r["DoPhanGiai"] as string ?? null;
 
-                                lblRam.Text = read("RAM");
-                                lblInternalStorage.Text = read("ROM");
-                                lblExpandable.Text = read("MauSac");
-                                lblRearCamera.Text = read("CameraSau");
-                                lblFrontCamera.Text = read("CameraTruoc");
-                                try { label17.Text = read("Chip"); } catch { }
-
-                                if (!rdr.IsDBNull(rdr.GetOrdinal("GiaBan")))
-                                {
-                                    decimal price = Convert.ToDecimal(rdr["GiaBan"]);
-                                    lblPrice.Text = price.ToString("N0");
-                                }
-                                else lblPrice.Text = "----";
-                            }
+                            lblRam.Text = $"RAM: {ram}";
+                            lblInternalStorage.Text = $"ROM: {rom}";
+                            lblExpandable.Text = $"Battery: {pin}";
+                            lblRam.Visible = lblInternalStorage.Visible = lblExpandable.Visible = true;
+                        }
+                        else
+                        {
+                            lblRam.Text = lblInternalStorage.Text = lblExpandable.Text = "----";
                         }
                     }
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Failed to load specs: " + ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading device details: " + ex.Message);
+            }
         }
 
-        private void UpdateSpecPanelFromRow(DataGridViewRow row)
+        // Fetch accessory (PHU_KIEN) details and map based on subtype
+        private void LoadAccessoryDetails(string maSP)
         {
-            if (row == null) return;
-            string Get(params string[] c) { foreach (var k in c) if (dgvProduct.Columns.Contains(k) && row.Cells[k].Value != null) return row.Cells[k].Value.ToString(); return "----"; }
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string q = @"SELECT LoaiPhuKien, ChieuDaiDay, CongSuat, DungLuong, KieuKetNoi
+                                 FROM PHU_KIEN WHERE MaSanPham = @id";
+                    SqlCommand cmd = new SqlCommand(q, conn);
+                    cmd.Parameters.AddWithValue("@id", maSP);
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        if (r.Read())
+                        {
+                            string loai = (r["LoaiPhuKien"] as string ?? "").ToLowerInvariant();
+                            string length = r["ChieuDaiDay"] as string ?? null;
+                            string watt = r["CongSuat"] as string ?? null;
+                            string cap = r["DungLuong"] as string ?? null;
+                            string connType = r["KieuKetNoi"] as string ?? null;
 
-            lblRam.Text = Get("RAM", "ram");
-            lblInternalStorage.Text = Get("ROM", "rom");
-            lblExpandable.Text = Get("MauSac", "Color");
-            lblRearCamera.Text = Get("CameraSau", "RearCamera");
-            lblFrontCamera.Text = Get("CameraTruoc", "FrontCamera");
-            try { label17.Text = Get("Chip", "SoC"); } catch { }
+                            // Default visibility
+                            lblRam.Visible = lblInternalStorage.Visible = lblExpandable.Visible = true;
 
-            var pText = Get("GiaBan", "Price");
-            if (decimal.TryParse(pText, out var p)) lblPrice.Text = p.ToString("N0");
-            else lblPrice.Text = pText;
+                            if (loai.Contains("sac") || loai.Contains("sacduphong") || loai.Contains("charger") || loai.Contains("sạc"))
+                            {
+                                // Charger or adapter: show wattage and cable length (if present)
+                                lblRam.Text = !string.IsNullOrEmpty(watt) ? $"Wattage: {watt}" : "Wattage: ----";
+                                lblInternalStorage.Text = !string.IsNullOrEmpty(length) ? $"Cable: {length}" : "Cable: ----";
+                                lblExpandable.Text = "----";
+                                lblExpandable.Visible = false;
+                            }
+                            else if (loai.Contains("tainghe") || loai.Contains("tai") || loai.Contains("head") || loai.Contains("ear"))
+                            {
+                                // Headphones: show capacity (battery) and connection type
+                                lblRam.Text = !string.IsNullOrEmpty(cap) ? $"Capacity: {cap}" : "Capacity: ----";
+                                lblInternalStorage.Text = !string.IsNullOrEmpty(connType) ? $"Connection: {connType}" : "Connection: ----";
+                                lblExpandable.Text = "----";
+                                lblExpandable.Visible = false;
+                            }
+                            else if (loai.Contains("sacduphong") || loai.Contains("power") || loai.Contains("pin") || loai.Contains("powerbank"))
+                            {
+                                // Power bank: connection type, wattage and capacity
+                                lblRam.Text = !string.IsNullOrEmpty(connType) ? $"Connection: {connType}" : "Connection: ----";
+                                lblInternalStorage.Text = !string.IsNullOrEmpty(watt) ? $"Wattage: {watt}" : "Wattage: ----";
+                                lblExpandable.Text = !string.IsNullOrEmpty(cap) ? $"Capacity: {cap}" : "Capacity: ----";
+                                lblExpandable.Visible = true;
+                            }
+                            else
+                            {
+                                // Unknown accessory: best-effort mapping
+                                lblRam.Text = !string.IsNullOrEmpty(loai) ? $"Type: {loai}" : "Type: ----";
+                                lblInternalStorage.Text = !string.IsNullOrEmpty(connType) ? $"Conn: {connType}" : "Conn: ----";
+                                lblExpandable.Text = !string.IsNullOrEmpty(cap) ? $"Spec: {cap}" : "Spec: ----";
+                                lblExpandable.Visible = !string.IsNullOrEmpty(lblExpandable.Text) && lblExpandable.Text != "----";
+                            }
+                        }
+                        else
+                        {
+                            lblRam.Text = lblInternalStorage.Text = lblExpandable.Text = "----";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading accessory details: " + ex.Message);
+            }
         }
     }
 }

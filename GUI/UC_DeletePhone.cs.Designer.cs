@@ -32,8 +32,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvDeletePhone = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnDeleteItem = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeletePhone)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,20 +76,6 @@
             this.dgvDeletePhone.Size = new System.Drawing.Size(850, 326);
             this.dgvDeletePhone.TabIndex = 3;
             // 
-            // label1
-            // 
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.label1.Image = global::DACK_ITPROJECT.Properties.Resources.delete__1_;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(277, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(346, 31);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Delete Phone Record";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnDeleteItem
             // 
             this.btnDeleteItem.FlatAppearance.BorderSize = 3;
@@ -103,6 +89,20 @@
             this.btnDeleteItem.TabIndex = 14;
             this.btnDeleteItem.Text = "Delete this item";
             this.btnDeleteItem.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.label1.Image = global::DACK_ITPROJECT.Properties.Resources.delete__1_;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(277, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(346, 31);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Delete Item Record";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UC_DeletePhone
             // 
