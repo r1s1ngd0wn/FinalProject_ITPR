@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,8 +19,11 @@ namespace DACK_ITPROJECT
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Show login first
-            var login = new Form1();
-            var result = login.ShowDialog();
+            //var login = new Form1();
+            //var result = login.ShowDialog();
+
+            //Show the main form 
+            Application.Run(new Login());
         }
     }
 }

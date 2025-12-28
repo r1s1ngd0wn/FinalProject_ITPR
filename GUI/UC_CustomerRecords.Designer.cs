@@ -34,7 +34,6 @@
             this.cboSearchBy = new System.Windows.Forms.ComboBox();
             this.lblSearchLabel = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.dgvCustomerRecords = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerRecords)).BeginInit();
@@ -102,15 +101,6 @@
             this.txtSearch.Size = new System.Drawing.Size(283, 19);
             this.txtSearch.TabIndex = 2;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // btnSearch
             // 
             this.btnSearch.FlatAppearance.BorderSize = 0;
@@ -121,6 +111,7 @@
             this.btnSearch.Size = new System.Drawing.Size(39, 31);
             this.btnSearch.TabIndex = 4;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dgvCustomerRecords
             // 
@@ -151,7 +142,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dgvCustomerRecords);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.cboSearchBy);
             this.Controls.Add(this.lblSearchLabel);
@@ -172,7 +162,6 @@
         private System.Windows.Forms.ComboBox cboSearchBy;
         private System.Windows.Forms.Label lblSearchLabel;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DataGridView dgvCustomerRecords;
     }

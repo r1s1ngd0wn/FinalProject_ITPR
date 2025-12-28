@@ -37,6 +37,8 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.panelThongSo = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -52,15 +54,13 @@
             this.label16 = new System.Windows.Forms.Label();
             this.btnCheckout = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearchItem = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvCart = new System.Windows.Forms.DataGridView();
-            this.btnAddToCart = new System.Windows.Forms.Button();
+            this.btnClearCart = new System.Windows.Forms.Button();
             this.panelThongSo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
@@ -159,6 +159,26 @@
             this.panelThongSo.Name = "panelThongSo";
             this.panelThongSo.Size = new System.Drawing.Size(395, 231);
             this.panelThongSo.TabIndex = 5;
+            // 
+            // label17
+            // 
+            this.label17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(181, 21);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(100, 23);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "----";
+            // 
+            // label14
+            // 
+            this.label14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(14, 21);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(100, 23);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "SoC";
             // 
             // label15
             // 
@@ -295,14 +315,14 @@
             this.btnCheckout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckout.ForeColor = System.Drawing.Color.Teal;
-            this.btnCheckout.Image = global::DACK_ITPROJECT.Properties.Resources.buy;
             this.btnCheckout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCheckout.Location = new System.Drawing.Point(339, 549);
+            this.btnCheckout.Location = new System.Drawing.Point(709, 551);
             this.btnCheckout.Name = "btnCheckout";
-            this.btnCheckout.Size = new System.Drawing.Size(187, 35);
+            this.btnCheckout.Size = new System.Drawing.Size(105, 35);
             this.btnCheckout.TabIndex = 6;
             this.btnCheckout.Text = "Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
+            this.btnCheckout.Click += new System.EventHandler(this.btnPurchase_Click);
             // 
             // label2
             // 
@@ -320,33 +340,13 @@
             this.label2.Text = "Customer Purchase";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label14
-            // 
-            this.label14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(14, 21);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(100, 23);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "SoC";
-            // 
-            // label17
-            // 
-            this.label17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(181, 21);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(100, 23);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "----";
-            // 
             // dgvProduct
             // 
             this.dgvProduct.BackgroundColor = System.Drawing.Color.White;
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.Location = new System.Drawing.Point(441, 81);
             this.dgvProduct.Name = "dgvProduct";
-            this.dgvProduct.Size = new System.Drawing.Size(384, 153);
+            this.dgvProduct.Size = new System.Drawing.Size(373, 153);
             this.dgvProduct.TabIndex = 7;
             // 
             // txtSearch
@@ -374,12 +374,13 @@
             this.btnSearchItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchItem.ForeColor = System.Drawing.Color.Teal;
             this.btnSearchItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearchItem.Location = new System.Drawing.Point(687, 40);
+            this.btnSearchItem.Location = new System.Drawing.Point(709, 40);
             this.btnSearchItem.Name = "btnSearchItem";
-            this.btnSearchItem.Size = new System.Drawing.Size(116, 35);
+            this.btnSearchItem.Size = new System.Drawing.Size(105, 35);
             this.btnSearchItem.TabIndex = 10;
             this.btnSearchItem.Text = "Search";
             this.btnSearchItem.UseVisualStyleBackColor = true;
+            this.btnSearchItem.Click += new System.EventHandler(this.btnSearchItem_Click);
             // 
             // label7
             // 
@@ -396,28 +397,28 @@
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCart.Location = new System.Drawing.Point(441, 302);
             this.dgvCart.Name = "dgvCart";
-            this.dgvCart.Size = new System.Drawing.Size(384, 194);
+            this.dgvCart.Size = new System.Drawing.Size(373, 194);
             this.dgvCart.TabIndex = 11;
             // 
-            // btnAddToCart
+            // btnClearCart
             // 
-            this.btnAddToCart.FlatAppearance.BorderSize = 3;
-            this.btnAddToCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddToCart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddToCart.ForeColor = System.Drawing.Color.Teal;
-            this.btnAddToCart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddToCart.Location = new System.Drawing.Point(687, 240);
-            this.btnAddToCart.Name = "btnAddToCart";
-            this.btnAddToCart.Size = new System.Drawing.Size(116, 35);
-            this.btnAddToCart.TabIndex = 13;
-            this.btnAddToCart.Text = "Add to cart";
-            this.btnAddToCart.UseVisualStyleBackColor = true;
+            this.btnClearCart.FlatAppearance.BorderSize = 3;
+            this.btnClearCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearCart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearCart.ForeColor = System.Drawing.Color.Teal;
+            this.btnClearCart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClearCart.Location = new System.Drawing.Point(709, 510);
+            this.btnClearCart.Name = "btnClearCart";
+            this.btnClearCart.Size = new System.Drawing.Size(105, 35);
+            this.btnClearCart.TabIndex = 13;
+            this.btnClearCart.Text = " Clear";
+            this.btnClearCart.UseVisualStyleBackColor = true;
             // 
             // UC_Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnAddToCart);
+            this.Controls.Add(this.btnClearCart);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.btnSearchItem);
@@ -479,6 +480,6 @@
         private System.Windows.Forms.Button btnSearchItem;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvCart;
-        private System.Windows.Forms.Button btnAddToCart;
+        private System.Windows.Forms.Button btnClearCart;
     }
 }

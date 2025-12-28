@@ -30,19 +30,19 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.txtRemoveBrand = new System.Windows.Forms.TabPage();
-            this.dgvAddBrand = new System.Windows.Forms.DataGridView();
-            this.txtAddBrand = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnAddBrand = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtAddBrand = new System.Windows.Forms.TextBox();
+            this.dgvAddBrand = new System.Windows.Forms.DataGridView();
+            this.txtRemoveBrand = new System.Windows.Forms.TabPage();
             this.btnRemoveBrand = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.txtRemoveBrand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAddBrand)).BeginInit();
+            this.txtRemoveBrand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,47 +67,8 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(842, 574);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Add brand";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // txtRemoveBrand
-            // 
-            this.txtRemoveBrand.Controls.Add(this.btnRemoveBrand);
-            this.txtRemoveBrand.Controls.Add(this.label2);
-            this.txtRemoveBrand.Controls.Add(this.textBox2);
-            this.txtRemoveBrand.Controls.Add(this.dataGridView2);
-            this.txtRemoveBrand.Location = new System.Drawing.Point(4, 22);
-            this.txtRemoveBrand.Name = "txtRemoveBrand";
-            this.txtRemoveBrand.Padding = new System.Windows.Forms.Padding(3);
-            this.txtRemoveBrand.Size = new System.Drawing.Size(842, 574);
-            this.txtRemoveBrand.TabIndex = 1;
-            this.txtRemoveBrand.Text = "tabPage2";
-            this.txtRemoveBrand.UseVisualStyleBackColor = true;
-            // 
-            // dgvAddBrand
-            // 
-            this.dgvAddBrand.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAddBrand.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAddBrand.Location = new System.Drawing.Point(0, 212);
-            this.dgvAddBrand.Name = "dgvAddBrand";
-            this.dgvAddBrand.Size = new System.Drawing.Size(842, 356);
-            this.dgvAddBrand.TabIndex = 0;
-            // 
-            // txtAddBrand
-            // 
-            this.txtAddBrand.Location = new System.Drawing.Point(526, 90);
-            this.txtAddBrand.Name = "txtAddBrand";
-            this.txtAddBrand.Size = new System.Drawing.Size(221, 20);
-            this.txtAddBrand.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(66, 87);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Brand : ";
             // 
             // btnAddBrand
             // 
@@ -122,6 +83,47 @@
             this.btnAddBrand.TabIndex = 14;
             this.btnAddBrand.Text = "Add";
             this.btnAddBrand.UseVisualStyleBackColor = true;
+            this.btnAddBrand.Click += new System.EventHandler(this.btnAddBrand_Click);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(66, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Brand : ";
+            // 
+            // txtAddBrand
+            // 
+            this.txtAddBrand.Location = new System.Drawing.Point(526, 90);
+            this.txtAddBrand.Name = "txtAddBrand";
+            this.txtAddBrand.Size = new System.Drawing.Size(221, 20);
+            this.txtAddBrand.TabIndex = 1;
+            // 
+            // dgvAddBrand
+            // 
+            this.dgvAddBrand.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAddBrand.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAddBrand.Location = new System.Drawing.Point(0, 212);
+            this.dgvAddBrand.Name = "dgvAddBrand";
+            this.dgvAddBrand.Size = new System.Drawing.Size(842, 356);
+            this.dgvAddBrand.TabIndex = 0;
+            // 
+            // txtRemoveBrand
+            // 
+            this.txtRemoveBrand.Controls.Add(this.btnRemoveBrand);
+            this.txtRemoveBrand.Controls.Add(this.label2);
+            this.txtRemoveBrand.Controls.Add(this.textBox2);
+            this.txtRemoveBrand.Controls.Add(this.dataGridView2);
+            this.txtRemoveBrand.Location = new System.Drawing.Point(4, 22);
+            this.txtRemoveBrand.Name = "txtRemoveBrand";
+            this.txtRemoveBrand.Padding = new System.Windows.Forms.Padding(3);
+            this.txtRemoveBrand.Size = new System.Drawing.Size(842, 574);
+            this.txtRemoveBrand.TabIndex = 1;
+            this.txtRemoveBrand.Text = "tabPage2";
+            this.txtRemoveBrand.UseVisualStyleBackColor = true;
+            this.txtRemoveBrand.Click += new System.EventHandler(this.btnRemoveBrand_Click);
             // 
             // btnRemoveBrand
             // 
@@ -172,9 +174,9 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAddBrand)).EndInit();
             this.txtRemoveBrand.ResumeLayout(false);
             this.txtRemoveBrand.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAddBrand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
