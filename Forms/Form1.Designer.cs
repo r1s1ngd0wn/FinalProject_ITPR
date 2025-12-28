@@ -39,6 +39,7 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnManageBrand = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnManageEmployee = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -171,6 +172,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.CadetBlue;
+            this.panelMenu.Controls.Add(this.btnManageEmployee);
             this.panelMenu.Controls.Add(this.btnManageBrand);
             this.panelMenu.Controls.Add(this.btnMinimize);
             this.panelMenu.Controls.Add(this.btnDelPhoneRec);
@@ -185,6 +187,21 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(250, 768);
             this.panelMenu.TabIndex = 0;
+            // 
+            // btnManageEmployee
+            // 
+            this.btnManageEmployee.FlatAppearance.BorderSize = 0;
+            this.btnManageEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageEmployee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageEmployee.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnManageEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManageEmployee.Location = new System.Drawing.Point(29, 412);
+            this.btnManageEmployee.Name = "btnManageEmployee";
+            this.btnManageEmployee.Size = new System.Drawing.Size(181, 59);
+            this.btnManageEmployee.TabIndex = 8;
+            this.btnManageEmployee.Text = "Manage Employees";
+            this.btnManageEmployee.UseVisualStyleBackColor = true;
+            this.btnManageEmployee.Click += new System.EventHandler(this.btnManageEmployee_Click);
             // 
             // Form1
             // 
@@ -217,6 +234,7 @@
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnManageBrand;
         private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Button btnManageEmployee;
     }
 }
 

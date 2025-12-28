@@ -13,29 +13,70 @@ namespace DACK_ITPROJECT
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private string currentUserRole;
+
+        // ⚠️ UPDATED CONSTRUCTOR: Accepts 'role' parameter
+        public Form1(string role)
         {
             InitializeComponent();
+            this.currentUserRole = role;
 
-            // Ensure container resizes and can show scrollbars instead of cropping child controls
+            // 1. Setup Window Layout
             this.panelCenter.Dock = DockStyle.Fill;
             this.panelCenter.AutoScroll = true;
             this.panelCenter.Padding = Padding.Empty;
             this.panelCenter.Margin = Padding.Empty;
             this.panelCenter.AutoSize = false;
 
-            // Link Navigation Buttons
+            // 2. Configure Permissions based on Role
+            ConfigurePermissions();
+
+            // 3. Link Navigation Buttons
             this.btnAddPhone.Click += new EventHandler(this.btnAddPhone_Click);
             this.btnCustomer.Click += new EventHandler(this.btnCustomer_Click);
             this.btnStock.Click += new EventHandler(this.btnStock_Click);
             this.btnCustomerRecords.Click += new EventHandler(this.btnCustomerRecords_Click);
-            this.btnDelPhoneRec.Click += new EventHandler(this.btnDelete_Click);
+
+            // Delete Button (Mapped to 'btnDelPhoneRec' or 'button1' depending on designer)
+            if (this.btnDelPhoneRec != null)
+                this.btnDelPhoneRec.Click += new EventHandler(this.btnDelete_Click);
+
             this.btnManageBrand.Click += new EventHandler(this.btnManageBrand_Click);
             this.btnExit.Click += new EventHandler(this.btnExit_Click);
             this.btnMinimize.Click += new EventHandler(this.btnMinimize_Click);
 
-            // Optional: Load default screen (e.g., Stock) on startup
+            // Link New Admin Button (Manage Employee)
+            // Ensure you added a button named 'btnManageEmployee' in the Designer for this to work!
+            // If you haven't added it yet, this check prevents crashes.
+            Control[] adminBtns = this.Controls.Find("btnManageEmployee", true);
+            if (adminBtns.Length > 0)
+            {
+                adminBtns[0].Click += new EventHandler(this.btnManageEmployee_Click);
+            }
+
+            // 4. Load Default Screen
             LoadSubForm(new UC_Stock());
+        }
+
+        // --- Permission Logic ---
+        private void ConfigurePermissions()
+        {
+            // If NOT Admin, hide sensitive buttons
+            if (this.currentUserRole != "Admin")
+            {
+                // Hide Manage Employee Button
+                Control[] adminBtns = this.Controls.Find("btnManageEmployee", true);
+                if (adminBtns.Length > 0) adminBtns[0].Visible = false;
+
+                // Optional: Hide Manage Brand Button if you want that restricted too
+                // if (this.btnManageBrand != null) this.btnManageBrand.Visible = false;
+            }
+            else
+            {
+                // If Admin, ensure buttons are visible
+                Control[] adminBtns = this.Controls.Find("btnManageEmployee", true);
+                if (adminBtns.Length > 0) adminBtns[0].Visible = true;
+            }
         }
 
         // --- Helper to switch screens ---
@@ -44,13 +85,11 @@ namespace DACK_ITPROJECT
             panelCenter.SuspendLayout();
             this.panelCenter.Controls.Clear();
 
-            // Remove extra spacing so UC can fill exactly
             uc.Margin = Padding.Empty;
             uc.Padding = Padding.Empty;
-            uc.AutoSize = false;               // prevent UC from resizing itself beyond the panel
-            uc.Dock = DockStyle.Fill;          // stretch to panel size
-            uc.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            uc.AutoScroll = true;              // allow UC to scroll internally if needed
+            uc.AutoSize = false;
+            uc.Dock = DockStyle.Fill;
+            uc.AutoScroll = true;
 
             this.panelCenter.Controls.Add(uc);
             uc.BringToFront();
@@ -66,7 +105,6 @@ namespace DACK_ITPROJECT
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
-            // This is the Sales / POS Screen
             LoadSubForm(new UC_Customer());
         }
 
@@ -82,12 +120,6 @@ namespace DACK_ITPROJECT
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // Mapped to 'button1' in designer
-            LoadSubForm(new UC_DeletePhone());
-        }
-
-        private void btnDelPhoneRec_Click(object sender, EventArgs e)
-        {
             LoadSubForm(new UC_DeletePhone());
         }
 
@@ -96,10 +128,17 @@ namespace DACK_ITPROJECT
             LoadSubForm(new UC_ManageBrand());
         }
 
+        private void btnManageEmployee_Click(object sender, EventArgs e)
+        {
+            // Ensure you have created this UserControl
+            LoadSubForm(new UC_ManageEmployee());
+        }
+
         // --- Window Controls ---
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Do you want to exit the application?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             Application.Exit();
         }
 
@@ -108,8 +147,11 @@ namespace DACK_ITPROJECT
             this.WindowState = FormWindowState.Minimized;
         }
 
+        // Add this method to your Form1 class
 
-        // If you add a "Manage Brand" button later, simply add:
-        // private void btnBrand_Click(object sender, EventArgs e) { LoadSubForm(new UC_ManageBrand()); }
+        private void btnDelPhoneRec_Click(object sender, EventArgs e)
+        {
+            // TODO: Add logic to handle the Delete Phone Record button click
+        }
     }
 }

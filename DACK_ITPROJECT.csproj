@@ -67,6 +67,12 @@
     <Compile Include="GUI\UC_ManageBrand.Designer.cs">
       <DependentUpon>UC_ManageBrand.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UC_ManageEmployee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UC_ManageEmployee.Designer.cs">
+      <DependentUpon>UC_ManageEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GUI\UC_AddNewPhone.cs">
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UC_ManageBrand.resx">
       <DependentUpon>UC_ManageBrand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UC_ManageEmployee.resx">
+      <DependentUpon>UC_ManageEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

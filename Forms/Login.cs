@@ -38,7 +38,7 @@ namespace DACK_ITPROJECT
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    // Use the Stored Procedure 'sp_DangNhap' from your V6 database
+                    // Use the Stored Procedure 'sp_DangNhap'
                     using (SqlCommand cmd = new SqlCommand("sp_DangNhap", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -50,13 +50,27 @@ namespace DACK_ITPROJECT
                             if (reader.HasRows)
                             {
                                 reader.Read();
-                                string role = reader["ChucVu"].ToString(); // Get role (Admin/Staff)
+
+                                // 1. Get Role and Name
+                                string role = reader["ChucVu"].ToString(); // e.g., "Admin" or "Staff"
                                 string name = reader["HoTen"].ToString();
 
-                                MessageBox.Show($"Welcome back, {name}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // 2. Optional: Check if account is active (Soft Delete Check)
+                                // If your DB has a 'TrangThai' column (1=Active, 0=Disabled)
+                                if (HasColumn(reader, "TrangThai"))
+                                {
+                                    bool isActive = Convert.ToBoolean(reader["TrangThai"]);
+                                    if (!isActive)
+                                    {
+                                        MessageBox.Show("This account has been disabled. Please contact Admin.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                }
 
-                                // Open Main Form
-                                Form1 mainForm = new Form1();
+                                MessageBox.Show($"Welcome back, {name} ({role})!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                // 3. Open Main Form and PASS THE ROLE
+                                Form1 mainForm = new Form1(role);
                                 mainForm.Show();
                                 this.Hide();
                             }
@@ -72,6 +86,17 @@ namespace DACK_ITPROJECT
             {
                 MessageBox.Show("Database connection error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // Helper to check if column exists in reader
+        private bool HasColumn(SqlDataReader r, string columnName)
+        {
+            for (int i = 0; i < r.FieldCount; i++)
+            {
+                if (r.GetName(i).Equals(columnName, StringComparison.InvariantCultureIgnoreCase))
+                    return true;
+            }
+            return false;
         }
     }
 }
